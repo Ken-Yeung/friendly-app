@@ -128,13 +128,44 @@ async function calendar(){
 }
 
 function create_calendar_cell(lst){
-    const month_mask = document.getElementsByClassName("t_g_months");
+    const month_mask = document.getElementsByClassName("t_g_calendar_wrapper");
     const month_head = document.getElementsByClassName("t_g_hd mid calendar");
+    const calendar_month = document.getElementsByClassName("t_g_months");
     console.log(lst);
     // append month & year
     for(let i = 0; i < month_mask.length; i++){
         let month = lst[i]["month"][0];
+        let month_index = lst[i]["month"][1];
         let year = lst[i]["year"];
+        month_mask[i].remove();
+
+        let calendar_wrapper = document.createElement("DIV");
+        calendar_wrapper.className = "t_g_calendar_wrapper";
+        calendar_month[i].appendChild(calendar_wrapper);
+        calendar_wrapper = document.getElementsByClassName("t_g_calendar_wrapper");
+
+        let len_week = lst[i]["weeks"].length;
+        for (let ii = 0; ii < len_week; ii++){
+            let days = lst[i]["weeks"][ii]["days"];
+            let calendar_row = document.createElement("DIV");
+            calendar_row.className = "t_g_calendar_row";
+            calendar_row.id = `${year}-${month_index}-${ii}`;
+            calendar_wrapper.appendChild(calendar_row);
+            calendar_row = document.getElementById(`${year}-${month_index}-${ii}`);
+
+            for (let iii = 0; iii < days.length; iii++){
+                let day = days[iii];
+                let cell = document.createElement("DIV");
+                cell.className = "t_g_calendar_cell";
+                cell.id = `cell-${day}-${month_index}-${year}`;
+                calendar_row.appendChild(cell);
+                cell = document.getElementById(`cell-${day}-${month_index}-${year}`);
+
+                let cell_txt = document.createElement("DIV");
+                cell_txt.innerText = day;
+                cell.appendChild(cell_txt);
+            }
+        }
         month_head[i].innerText = `${month} ${year}`;
     }
     // end append month & year
