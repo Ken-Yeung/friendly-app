@@ -128,7 +128,7 @@ async function calendar(){
     return;
 }
 
-function create_calendar_cell(lst){
+async function create_calendar_cell(lst){
     const month_mask = document.getElementsByClassName("t_g_calendar_wrapper");
     const month_head = document.getElementsByClassName("t_g_hd mid calendar");
     const calendar_month = document.getElementsByClassName("t_g_months");
@@ -142,7 +142,7 @@ function create_calendar_cell(lst){
 
         let calendar_wrapper = document.createElement("DIV");
         calendar_wrapper.className = "t_g_calendar_wrapper";
-        calendar_month[i].appendChild(calendar_wrapper);
+        await calendar_month[i].appendChild(calendar_wrapper);
         calendar_wrapper = document.getElementsByClassName("t_g_calendar_wrapper");
 
         let len_week = lst[i]["weeks"].length;
@@ -151,7 +151,7 @@ function create_calendar_cell(lst){
             let calendar_row = document.createElement("DIV");
             calendar_row.className = "t_g_calendar_row";
             calendar_row.id = `${year}-${month_index}-${ii}`;
-            calendar_wrapper[i].appendChild(calendar_row);
+            await calendar_wrapper[i].appendChild(calendar_row);
             calendar_row = document.getElementById(`${year}-${month_index}-${ii}`);
 
             for (let iii = 0; iii < days.length; iii++){ //Every Day!
@@ -159,12 +159,12 @@ function create_calendar_cell(lst){
                 let cell = document.createElement("DIV");
                 cell.className = "t_g_calendar_cell";
                 cell.id = `cell-${day}-${month_index}-${year}`;
-                calendar_row.appendChild(cell);
+                await calendar_row.appendChild(cell);
                 cell = document.getElementById(`cell-${day}-${month_index}-${year}`);
 
                 let cell_txt = document.createElement("DIV");
                 cell_txt.innerText = day;
-                cell.appendChild(cell_txt);
+                await cell.appendChild(cell_txt);
             }
         }
         month_head[i].innerText = `${month} ${year}`;
