@@ -159,24 +159,25 @@ async function create_calendar_cell(lst){
                 let is_today = days[iii]["today"]
                 let day_status = days[iii]["this"];
                 let cell = document.createElement("DIV");
+                let this_id;
                 //////!!!!!!!!!!!!!
                 if (day_status && !is_today){
                     cell.className = "t_g_calendar_cell";
-                    let this_id = `cell-${convert_date_id(year, month_index, day, ii, len_week, day_status)}`;
+                    this_id = `cell-${convert_date_id(year, month_index, day, ii, len_week, day_status)}`;
                     cell.id = this_id;
                     await calendar_row.appendChild(cell);
                     cell = document.getElementById(this_id);
 
                 } else if (!day_status) {
                     cell.className = "t_g_calendar_cell grey";
-                    let this_id = `false-${convert_date_id(year, month_index, day, ii, len_week, day_status)}`;
+                    this_id = `false-${convert_date_id(year, month_index, day, ii, len_week, day_status)}`;
                     cell.id = this_id;
                     await calendar_row.appendChild(cell);
                     cell = document.getElementById(this_id);
 
                 } else if (day_status && is_today){
                     cell.className = "t_g_calendar_cell today";
-                    let this_id = `cell-${convert_date_id(year, month_index, day, ii, len_week, day_status)}`;
+                    this_id = `cell-${convert_date_id(year, month_index, day, ii, len_week, day_status)}`;
                     cell.id = this_id;
                     await calendar_row.appendChild(cell);
                     cell = document.getElementById(this_id);
@@ -186,9 +187,7 @@ async function create_calendar_cell(lst){
                 cell_txt.innerText = day;
                 await cell.appendChild(cell_txt);
                 cell.addEventListener("click", (e)=>{
-                    console.log(this.id);
-                    let this_foo_id = e.target.id;
-                    // this_foo_id = this_foo_id.split(/-(.+)/)[1];
+                    this_foo_id = this_id.split(/-(.+)/)[1];
                     alert(`Clicked: ${this_foo_id}`);
                 });
             }
