@@ -166,9 +166,9 @@ async function create_calendar_cell(lst){
                     cell.id = `cell-${this_id}`;
                     await calendar_row.appendChild(cell);
                     cell = document.getElementById(`cell-${this_id}`);
-                    let cell_txt = document.createElement("DIV");
-                    cell_txt.innerText = day;
-                    await cell.appendChild(cell_txt);
+                    // let cell_txt = document.createElement("DIV");
+                    // cell_txt.innerText = day;
+                    // await cell.appendChild(cell_txt);
 
                 } else if (!day_status) {
                     cell.className = "t_g_calendar_cell grey";
@@ -176,9 +176,9 @@ async function create_calendar_cell(lst){
                     cell.id = `false-cell-${this_id}`;
                     await calendar_row.appendChild(cell);
                     cell = document.getElementById(`false-cell-${this_id}`);
-                    let cell_txt = document.createElement("DIV");
-                    cell_txt.innerText = day;
-                    await cell.appendChild(cell_txt);
+                    // let cell_txt = document.createElement("DIV");
+                    // cell_txt.innerText = day;
+                    // await cell.appendChild(cell_txt);
 
                 } else if (day_status && is_today){
                     cell.className = "t_g_calendar_cell today";
@@ -186,10 +186,13 @@ async function create_calendar_cell(lst){
                     cell.id = `cell-${this_id}`;
                     await calendar_row.appendChild(cell);
                     cell = document.getElementById(`cell-${this_id}`);
-                    let cell_txt = document.createElement("DIV");
-                    cell_txt.innerText = day;
-                    await cell.appendChild(cell_txt);
+                    // let cell_txt = document.createElement("DIV");
+                    // cell_txt.innerText = day;
+                    // await cell.appendChild(cell_txt);
                 }
+                let cell_txt = document.createElement("DIV");
+                cell_txt.innerText = day;
+                await cell.appendChild(cell_txt);
             }
         }
         month_head[i].innerText = `${month} ${year}`;
