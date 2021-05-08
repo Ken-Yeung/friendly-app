@@ -186,7 +186,7 @@ async function create_calendar_cell(lst){
                 cell_txt.innerText = day;
                 await cell.appendChild(cell_txt);
                 cell.addEventListener("click", (e)=>{
-                    let this_foo_id = this.id;
+                    let this_foo_id = e.target.id;
                     // this_foo_id = this_foo_id.split(/-(.+)/)[1];
                     alert(`Clicked: ${this_foo_id}`);
                 });
