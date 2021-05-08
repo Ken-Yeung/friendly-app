@@ -219,7 +219,7 @@ function convert_date_id(year, month, day, week, total_week, this_week){
 $(document).ready(() => {
     const device_mode = window.getComputedStyle(document.getElementById("device-mode"), null).display;
     if (device_mode == "none"){
-        append_events(6);
+        append_events(1);
         filtering();
         addEvent();
         calendar();
