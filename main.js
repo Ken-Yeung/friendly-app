@@ -156,10 +156,11 @@ async function create_calendar_cell(lst){
 
             for (let iii = 0; iii < days.length; iii++){ //Every Day!
                 let day = days[iii]["day"];
+                let is_today = days[iii]["today"]
                 let day_status = days[iii]["this"];
                 let cell = document.createElement("DIV");
                 //////!!!!!!!!!!!!!
-                if (day_status){
+                if (day_status && !is_today){
                     cell.className = "t_g_calendar_cell";
                     cell.id = `cell-${day}-${month_index}-${year}`;
                     await calendar_row.appendChild(cell);
@@ -167,11 +168,19 @@ async function create_calendar_cell(lst){
                     let cell_txt = document.createElement("DIV");
                     cell_txt.innerText = day;
                     await cell.appendChild(cell_txt);
-                } else {
+                } else if (!day_status) {
                     cell.className = "t_g_calendar_cell grey";
                     cell.id = `false-cell-${day}-${month_index}-${year}`;
                     await calendar_row.appendChild(cell);
                     cell = document.getElementById(`false-cell-${day}-${month_index}-${year}`);
+                    let cell_txt = document.createElement("DIV");
+                    cell_txt.innerText = day;
+                    await cell.appendChild(cell_txt);
+                } else if (day_status && is_today){
+                    cell.className = "t_g_calendar_cell today";
+                    cell.id = `cell-${day}-${month_index}-${year}`;
+                    await calendar_row.appendChild(cell);
+                    cell = document.getElementById(`cell-${day}-${month_index}-${year}`);
                     let cell_txt = document.createElement("DIV");
                     cell_txt.innerText = day;
                     await cell.appendChild(cell_txt);
