@@ -187,7 +187,7 @@ async function create_calendar_cell(lst){
                 await cell.appendChild(cell_txt);
                 cell.addEventListener("click", (e)=>{
                     let this_foo_id = this.id;
-                    this_foo_id = this_foo_id.split(/-(.+)/)[1]
+                    // this_foo_id = this_foo_id.split(/-(.+)/)[1];
                     alert(`Clicked: ${this_foo_id}`);
                 });
             }
