@@ -164,23 +164,25 @@ async function create_calendar_cell(lst){
                     cell.className = "t_g_calendar_cell";
                     cell.id = `cell-${day}-${month_index}-${year}`;
                     await calendar_row.appendChild(cell);
-                    cell = document.getElementById(`cell-${day}-${month_index}-${year}`);
+                    cell = document.getElementById(`cell-${convert_date_id(year, month_index, day, ii, len_week, day_status)}`);
                     let cell_txt = document.createElement("DIV");
                     cell_txt.innerText = day;
                     await cell.appendChild(cell_txt);
+
                 } else if (!day_status) {
                     cell.className = "t_g_calendar_cell grey";
                     cell.id = `false-cell-${day}-${month_index}-${year}`;
                     await calendar_row.appendChild(cell);
-                    cell = document.getElementById(`false-cell-${day}-${month_index}-${year}`);
+                    cell = document.getElementById(`false-cell-${convert_date_id(year, month_index, day, ii, len_week, day_status)}`);
                     let cell_txt = document.createElement("DIV");
                     cell_txt.innerText = day;
                     await cell.appendChild(cell_txt);
+
                 } else if (day_status && is_today){
                     cell.className = "t_g_calendar_cell today";
                     cell.id = `cell-${day}-${month_index}-${year}`;
                     await calendar_row.appendChild(cell);
-                    cell = document.getElementById(`cell-${day}-${month_index}-${year}`);
+                    cell = document.getElementById(`cell-${convert_date_id(year, month_index, day, ii, len_week, day_status)}`);
                     let cell_txt = document.createElement("DIV");
                     cell_txt.innerText = day;
                     await cell.appendChild(cell_txt);
@@ -191,6 +193,21 @@ async function create_calendar_cell(lst){
     }
     // end append month & year
     return;
+}
+
+function convert_date_id(year, month, day, week, total_week, this_week){
+    if (parseInt(month) == 1 && week == 0 && !this_week){
+        month = 12;
+        year = parseInt(year) - 1;
+    } else if (parseInt(month) == 12 && week == total_week - 1 && !this_week){
+        month = 1;
+        year = parseInt(year) + 1;
+    } else if (week == 0 && !this_week){
+        month = parseInt(month) - 1;
+    } else if (week == total_week - 1 && !this_week){
+        month = parseInt(month) + 1;
+    }
+    return `${day}-${month}-${year}`
 }
 
 $(document).ready(() => {
