@@ -121,7 +121,7 @@ async function calendar(){
     await get_api(`https://beagleetech.ga/calendar_dates?date=${current_date().toString()}`).then(res=>{
         main_data_lst = res;
     });
-    let lst = main_data_lst["cal_dates"];
+    let lst = main_data_lst["details"];
 
     create_calendar_cell(lst);
     // for(let i = 0; i < lst.length; i++){
@@ -137,7 +137,7 @@ function create_calendar_cell(lst){
     console.log(lst);
     // append month & year
     for(let i = 0; i < month_mask.length; i++){
-        let month = lst[i]["month"];
+        let month = lst[i]["month"][0];
         let year = lst[i]["year"];
         month_head[i].innerText = `${month} ${year}`;
     }
