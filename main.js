@@ -171,7 +171,7 @@ async function create_calendar_cell(lst){
                     cell.className = "t_g_calendar_cell grey";
                     cell.id = `false-cell-${day}-${month_index}-${year}`;
                     await calendar_row.appendChild(cell);
-                    cell = document.getElementById(`cell-${day}-${month_index}-${year}`);
+                    cell = document.getElementById(`false-cell-${day}-${month_index}-${year}`);
                     let cell_txt = document.createElement("DIV");
                     cell_txt.innerText = day;
                 }
