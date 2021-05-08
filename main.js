@@ -174,7 +174,7 @@ async function create_calendar_cell(lst){
                     cell = document.getElementById(`false-cell-${day}-${month_index}-${year}`);
                     let cell_txt = document.createElement("DIV");
                     cell_txt.innerText = day;
-                    console.log(`appended: false-cell-${day}-${month_index}-${year}`)
+                    await cell.appendChild(cell_txt);
                 }
             }
         }
