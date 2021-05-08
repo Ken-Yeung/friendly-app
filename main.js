@@ -124,10 +124,6 @@ async function calendar(){
     let lst = main_data_lst["details"];
 
     create_calendar_cell(lst);
-    // for(let i = 0; i < lst.length; i++){
-    //     console.log(lst[i]["month"]);
-    // }
-
     return;
 }
 
@@ -141,9 +137,7 @@ function create_calendar_cell(lst){
         let year = lst[i]["year"];
         month_head[i].innerText = `${month} ${year}`;
     }
-    
     // end append month & year
-    
     return;
 }
 
