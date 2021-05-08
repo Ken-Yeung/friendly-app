@@ -162,30 +162,30 @@ async function create_calendar_cell(lst){
                 //////!!!!!!!!!!!!!
                 if (day_status && !is_today){
                     cell.className = "t_g_calendar_cell";
-                    let this_id = convert_date_id(year, month_index, day, ii, len_week, day_status);
-                    cell.id = `cell-${this_id}`;
+                    let this_id = `cell-${convert_date_id(year, month_index, day, ii, len_week, day_status)}`;
+                    cell.id = this_id;
                     await calendar_row.appendChild(cell);
-                    cell = document.getElementById(`cell-${this_id}`);
+                    cell = document.getElementById(this_id);
                     // let cell_txt = document.createElement("DIV");
                     // cell_txt.innerText = day;
                     // await cell.appendChild(cell_txt);
 
                 } else if (!day_status) {
                     cell.className = "t_g_calendar_cell grey";
-                    let this_id = convert_date_id(year, month_index, day, ii, len_week, day_status);
-                    cell.id = `false-cell-${this_id}`;
+                    let this_id = `false-cell-${convert_date_id(year, month_index, day, ii, len_week, day_status)}`;
+                    cell.id = this_id;
                     await calendar_row.appendChild(cell);
-                    cell = document.getElementById(`false-cell-${this_id}`);
+                    cell = document.getElementById(this_id);
                     // let cell_txt = document.createElement("DIV");
                     // cell_txt.innerText = day;
                     // await cell.appendChild(cell_txt);
 
                 } else if (day_status && is_today){
                     cell.className = "t_g_calendar_cell today";
-                    let this_id = convert_date_id(year, month_index, day, ii, len_week, day_status);
-                    cell.id = `cell-${this_id}`;
+                    let this_id = `cell-${convert_date_id(year, month_index, day, ii, len_week, day_status)}`;
+                    cell.id = this_id;
                     await calendar_row.appendChild(cell);
-                    cell = document.getElementById(`cell-${this_id}`);
+                    cell = document.getElementById(this_id);
                     // let cell_txt = document.createElement("DIV");
                     // cell_txt.innerText = day;
                     // await cell.appendChild(cell_txt);
