@@ -199,7 +199,7 @@ async function create_calendar_cell(lst){
 }
 
 function convert_date_id(year, month, day, week, total_week, this_week){
-    if (parseInt(month) == 1 && week == 0 && !this_week){
+    if (parseInt(month) == 1 && week == 0 && !this_week && parseInt(day) > 15){
         month = 12;
         year = parseInt(year) - 1;
     } else if (parseInt(month) == 12 && week == total_week - 1 && !this_week){
