@@ -166,19 +166,13 @@ async function create_calendar_cell(lst){
                     cell.id = this_id;
                     await calendar_row.appendChild(cell);
                     cell = document.getElementById(this_id);
-                    // let cell_txt = document.createElement("DIV");
-                    // cell_txt.innerText = day;
-                    // await cell.appendChild(cell_txt);
 
                 } else if (!day_status) {
                     cell.className = "t_g_calendar_cell grey";
-                    let this_id = `false-cell-${convert_date_id(year, month_index, day, ii, len_week, day_status)}`;
+                    let this_id = `false-${convert_date_id(year, month_index, day, ii, len_week, day_status)}`;
                     cell.id = this_id;
                     await calendar_row.appendChild(cell);
                     cell = document.getElementById(this_id);
-                    // let cell_txt = document.createElement("DIV");
-                    // cell_txt.innerText = day;
-                    // await cell.appendChild(cell_txt);
 
                 } else if (day_status && is_today){
                     cell.className = "t_g_calendar_cell today";
@@ -186,13 +180,16 @@ async function create_calendar_cell(lst){
                     cell.id = this_id;
                     await calendar_row.appendChild(cell);
                     cell = document.getElementById(this_id);
-                    // let cell_txt = document.createElement("DIV");
-                    // cell_txt.innerText = day;
-                    // await cell.appendChild(cell_txt);
                 }
+                ////!
                 let cell_txt = document.createElement("DIV");
                 cell_txt.innerText = day;
                 await cell.appendChild(cell_txt);
+                cell.addEventListener("click", (e)=>{
+                    let this_foo_id = e.target.id;
+                    this_foo_id = this_foo_id.split(/_(.+)/)[1]
+                    alert(`Clicked: ${this_foo_id}`);
+                });
             }
         }
         month_head[i].innerText = `${month} ${year}`;
