@@ -150,7 +150,7 @@ function create_calendar_cell(lst){
             let calendar_row = document.createElement("DIV");
             calendar_row.className = "t_g_calendar_row";
             calendar_row.id = `${year}-${month_index}-${ii}`;
-            calendar_wrapper.appendChild(calendar_row);
+            calendar_wrapper[i].appendChild(calendar_row);
             calendar_row = document.getElementById(`${year}-${month_index}-${ii}`);
 
             for (let iii = 0; iii < days.length; iii++){
