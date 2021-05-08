@@ -156,15 +156,25 @@ async function create_calendar_cell(lst){
 
             for (let iii = 0; iii < days.length; iii++){ //Every Day!
                 let day = days[iii]["day"];
+                let day_status = days[iii]["this"];
                 let cell = document.createElement("DIV");
-                cell.className = "t_g_calendar_cell";
-                cell.id = `cell-${day}-${month_index}-${year}`;
-                await calendar_row.appendChild(cell);
-                cell = document.getElementById(`cell-${day}-${month_index}-${year}`);
-
-                let cell_txt = document.createElement("DIV");
-                cell_txt.innerText = day;
-                await cell.appendChild(cell_txt);
+                //////!!!!!!!!!!!!!
+                if (day_status){
+                    cell.className = "t_g_calendar_cell";
+                    cell.id = `cell-${day}-${month_index}-${year}`;
+                    await calendar_row.appendChild(cell);
+                    cell = document.getElementById(`cell-${day}-${month_index}-${year}`);
+                    let cell_txt = document.createElement("DIV");
+                    cell_txt.innerText = day;
+                    await cell.appendChild(cell_txt);
+                } else {
+                    cell.className = "t_g_calendar_cell grey";
+                    cell.id = `false-cell-${day}-${month_index}-${year}`;
+                    await calendar_row.appendChild(cell);
+                    cell = document.getElementById(`cell-${day}-${month_index}-${year}`);
+                    let cell_txt = document.createElement("DIV");
+                    cell_txt.innerText = day;
+                }
             }
         }
         month_head[i].innerText = `${month} ${year}`;
