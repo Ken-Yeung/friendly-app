@@ -124,6 +124,7 @@ async function calendar(){
     let lst = main_data_lst["details"];
 
     create_calendar_cell(lst);
+    console.log("Done!");
     return;
 }
 
@@ -153,8 +154,8 @@ function create_calendar_cell(lst){
             calendar_wrapper[i].appendChild(calendar_row);
             calendar_row = document.getElementById(`${year}-${month_index}-${ii}`);
 
-            for (let iii = 0; iii < days.length; iii++){
-                let day = days[iii];
+            for (let iii = 0; iii < days.length; iii++){ //Every Day!
+                let day = days[iii]["day"];
                 let cell = document.createElement("DIV");
                 cell.className = "t_g_calendar_cell";
                 cell.id = `cell-${day}-${month_index}-${year}`;
