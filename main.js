@@ -107,7 +107,7 @@ function addEvent(){
 function current_date(){
     let today = new Date();
     let date = today.getDate()+'-'+(today.getMonth()+1)+'-'+ today.getFullYear();
-    return "31-1-2021"//date;
+    return date;//"31-1-2021";
 }
 
 async function get_api(url){
