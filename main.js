@@ -177,7 +177,7 @@ async function create_calendar_cell(lst){
 
                 } else if (day_status && !available){
 
-                    this_id = `cell-${this_id}`;
+                    this_id = `passed-${this_id}`;
                     cell.className = "t_g_calendar_cell grey";
 
                 }
