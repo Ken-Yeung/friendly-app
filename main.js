@@ -162,7 +162,9 @@ async function create_calendar_cell(lst){
                 cell.className = "t_g_calendar_cell";
 
                 if (day_status && !is_today && available){
-
+                    if (iii == 0){
+                        cell.className = "t_g_calendar_cell sun";
+                    }
                     this_id = `cell-${this_id}`;
 
                 } else if (!day_status && !available) {
