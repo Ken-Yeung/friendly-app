@@ -158,33 +158,38 @@ async function create_calendar_cell(lst){
                 let is_today = days[iii]["today"]
                 let day_status = days[iii]["this"];
                 let cell = document.createElement("DIV");
-                let this_id;
+                let this_id = days[iii]["id"];
                 let cell_txt = document.createElement("DIV");
                 cell_txt.className = "t_g_c_today";
+                cell.className = "t_g_calendar_cell"; //upper no
+                this_id = `cell-${this_id}`; //upper no
                 //////!!!!!!!!!!!!!
-                if (day_status && !is_today){
-                    cell.className = "t_g_calendar_cell";
-                    this_id = `cell-${convert_date_id(year, month_index, day, ii, len_week, day_status)}`;
-                    cell.id = this_id;
-                    await calendar_row.appendChild(cell);
-                    cell = document.getElementById(this_id);
-
-                } else if (!day_status) {
+                // if (day_status && !is_today){
+                //     // cell.className = "t_g_calendar_cell";
+                //     // this_id = `cell-${this_id}`;
+                //     // cell.id = this_id;
+                //     // await calendar_row.appendChild(cell);
+                //     // cell = document.getElementById(this_id);
+                // } else 
+                if (!day_status) {
                     cell.className = "t_g_calendar_cell grey";
-                    this_id = `false-${convert_date_id(year, month_index, day, ii, len_week, day_status)}`;
-                    cell.id = this_id;
-                    await calendar_row.appendChild(cell);
-                    cell = document.getElementById(this_id);
+                    this_id = `false-${this_id}`;
+                    // cell.id = this_id;
+                    // await calendar_row.appendChild(cell);
+                    // cell = document.getElementById(this_id);
 
                 } else if (day_status && is_today){
-                    cell.className = "t_g_calendar_cell";
-                    this_id = `cell-${convert_date_id(year, month_index, day, ii, len_week, day_status)}`;
-                    cell.id = this_id;
-                    await calendar_row.appendChild(cell);
-                    cell = document.getElementById(this_id);
+                    // cell.className = "t_g_calendar_cell"; //upper no
+                    // this_id = `cell-${this_id}`; //upper no
+                    // cell.id = this_id; // No
+                    // await calendar_row.appendChild(cell); // No
+                    // cell = document.getElementById(this_id); //No
                     cell_txt.className = "t_g_c_today today";
                 }
                 ////!
+                cell.id = this_id; // No
+                await calendar_row.appendChild(cell); // No
+                cell = document.getElementById(this_id); //No
                 cell_txt.innerText = day;
                 await cell.appendChild(cell_txt);
                 cell.addEventListener("click", (e)=>{
