@@ -157,17 +157,29 @@ async function create_calendar_cell(lst){
                 let cell = document.createElement("DIV");
                 let this_id = days[iii]["id"];
                 let cell_txt = document.createElement("DIV");
+                let available = days[iii]["available"];
                 cell_txt.className = "t_g_c_today";
                 cell.className = "t_g_calendar_cell";
-                if (day_status && !is_today){
+
+                if (day_status && !is_today && available){
+
                     this_id = `cell-${this_id}`;
-                } else if (!day_status) {
+
+                } else if (!day_status && !available) {
+
                     cell.className = "t_g_calendar_cell grey";
                     this_id = `false-${this_id}`;
 
                 } else if (day_status && is_today){
+
                     this_id = `cell-${this_id}`;
                     cell_txt.className = "t_g_c_today today";
+
+                } else if (day_status && !available){
+
+                    this_id = `cell-${this_id}`;
+                    cell.className = "t_g_calendar_cell grey";
+
                 }
                 ////!
                 cell.id = this_id;
