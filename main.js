@@ -17,7 +17,7 @@ function sign_up_norm_fuc(e){
 }
 
 function sign_in_port_fuc(e){
-    const test_back = document.getElementById("sign_in_portal");
+    const test_back = document.getElementById("t-2");
 
     test_back.click();
     return false;
