@@ -8,5 +8,6 @@ function add_events(){
 }
 
 $(document).ready(() => {
-    console.log("Finished");
+    add_events();
+    // console.log("Finished");
 });
