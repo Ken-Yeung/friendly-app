@@ -116,14 +116,11 @@ async function get_api(url){
 }
 
 async function calendar(){
-    let main_data_lst = {};
+    let main_data_lst = [];
     await get_api(`https://beagleetech.ga/calendar_dates?date=${current_date().toString()}`).then(res=>{
-        main_data_lst = res;
+        main_data_lst = res["details"];
     });
-    let lst = main_data_lst["details"];
-
-    create_calendar_cell(lst);
-    console.log("Done!");
+    create_calendar_cell(main_data_lst);
     return;
 }
 
