@@ -162,16 +162,15 @@ async function create_calendar_cell(lst){
                 let cell_txt = document.createElement("DIV");
                 cell_txt.className = "t_g_c_today";
                 cell.className = "t_g_calendar_cell"; //upper no
-                this_id = `cell-${this_id}`; //upper no
+                // this_id = `cell-${this_id}`; //upper no
                 //////!!!!!!!!!!!!!
-                // if (day_status && !is_today){
+                if (day_status && !is_today){
                 //     // cell.className = "t_g_calendar_cell";
-                //     // this_id = `cell-${this_id}`;
+                    this_id = `cell-${this_id}`;
                 //     // cell.id = this_id;
                 //     // await calendar_row.appendChild(cell);
                 //     // cell = document.getElementById(this_id);
-                // } else 
-                if (!day_status) {
+                } else if (!day_status) {
                     cell.className = "t_g_calendar_cell grey";
                     this_id = `false-${this_id}`;
                     // cell.id = this_id;
@@ -180,7 +179,7 @@ async function create_calendar_cell(lst){
 
                 } else if (day_status && is_today){
                     // cell.className = "t_g_calendar_cell"; //upper no
-                    // this_id = `cell-${this_id}`; //upper no
+                    this_id = `cell-${this_id}`; //upper no
                     // cell.id = this_id; // No
                     // await calendar_row.appendChild(cell); // No
                     // cell = document.getElementById(this_id); //No
