@@ -161,34 +161,21 @@ async function create_calendar_cell(lst){
                 let this_id = days[iii]["id"];
                 let cell_txt = document.createElement("DIV");
                 cell_txt.className = "t_g_c_today";
-                cell.className = "t_g_calendar_cell"; //upper no
-                // this_id = `cell-${this_id}`; //upper no
-                //////!!!!!!!!!!!!!
+                cell.className = "t_g_calendar_cell";
                 if (day_status && !is_today){
-                //     // cell.className = "t_g_calendar_cell";
                     this_id = `cell-${this_id}`;
-                //     // cell.id = this_id;
-                //     // await calendar_row.appendChild(cell);
-                //     // cell = document.getElementById(this_id);
                 } else if (!day_status) {
                     cell.className = "t_g_calendar_cell grey";
                     this_id = `false-${this_id}`;
-                    // cell.id = this_id;
-                    // await calendar_row.appendChild(cell);
-                    // cell = document.getElementById(this_id);
 
                 } else if (day_status && is_today){
-                    // cell.className = "t_g_calendar_cell"; //upper no
-                    this_id = `cell-${this_id}`; //upper no
-                    // cell.id = this_id; // No
-                    // await calendar_row.appendChild(cell); // No
-                    // cell = document.getElementById(this_id); //No
+                    this_id = `cell-${this_id}`;
                     cell_txt.className = "t_g_c_today today";
                 }
                 ////!
-                cell.id = this_id; // No
-                await calendar_row.appendChild(cell); // No
-                cell = document.getElementById(this_id); //No
+                cell.id = this_id;
+                await calendar_row.appendChild(cell);
+                cell = document.getElementById(this_id);
                 cell_txt.innerText = day;
                 await cell.appendChild(cell_txt);
                 cell.addEventListener("click", (e)=>{
@@ -203,20 +190,20 @@ async function create_calendar_cell(lst){
     return;
 }
 
-function convert_date_id(year, month, day, week, total_week, this_week){
-    if (parseInt(month) == 1 && week == 0 && !this_week && parseInt(day) > 15){
-        month = 12;
-        year = parseInt(year) - 1;
-    } else if (parseInt(month) == 12 && week == total_week - 1 && !this_week){
-        month = 1;
-        year = parseInt(year) + 1;
-    } else if (week == 0 && !this_week && parseInt(month) != 1 && parseInt(day) > 15){
-        month = parseInt(month) - 1;
-    } else if (week == total_week - 1 && !this_week){
-        month = parseInt(month) + 1;
-    }
-    return `${day}-${month}-${year}`
-}
+// function convert_date_id(year, month, day, week, total_week, this_week){
+//     if (parseInt(month) == 1 && week == 0 && !this_week && parseInt(day) > 15){
+//         month = 12;
+//         year = parseInt(year) - 1;
+//     } else if (parseInt(month) == 12 && week == total_week - 1 && !this_week){
+//         month = 1;
+//         year = parseInt(year) + 1;
+//     } else if (week == 0 && !this_week && parseInt(month) != 1 && parseInt(day) > 15){
+//         month = parseInt(month) - 1;
+//     } else if (week == total_week - 1 && !this_week){
+//         month = parseInt(month) + 1;
+//     }
+//     return `${day}-${month}-${year}`
+// }
 
 $(document).ready(() => {
     const device_mode = window.getComputedStyle(document.getElementById("device-mode"), null).display;
