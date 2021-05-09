@@ -160,6 +160,8 @@ async function create_calendar_cell(lst){
                 let day_status = days[iii]["this"];
                 let cell = document.createElement("DIV");
                 let this_id;
+                let cell_txt = document.createElement("DIV");
+                cell_txt.className = "t_g_c_today";
                 //////!!!!!!!!!!!!!
                 if (day_status && !is_today){
                     cell.className = "t_g_calendar_cell";
@@ -176,14 +178,14 @@ async function create_calendar_cell(lst){
                     cell = document.getElementById(this_id);
 
                 } else if (day_status && is_today){
-                    cell.className = "t_g_calendar_cell today";
+                    cell.className = "t_g_calendar_cell";
                     this_id = `cell-${convert_date_id(year, month_index, day, ii, len_week, day_status)}`;
                     cell.id = this_id;
                     await calendar_row.appendChild(cell);
                     cell = document.getElementById(this_id);
+                    cell_txt.className = "t_g_c_today today";
                 }
                 ////!
-                let cell_txt = document.createElement("DIV");
                 cell_txt.innerText = day;
                 await cell.appendChild(cell_txt);
                 cell.addEventListener("click", (e)=>{
