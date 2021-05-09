@@ -201,21 +201,6 @@ async function create_calendar_cell(lst){
     return;
 }
 
-// function convert_date_id(year, month, day, week, total_week, this_week){
-//     if (parseInt(month) == 1 && week == 0 && !this_week && parseInt(day) > 15){
-//         month = 12;
-//         year = parseInt(year) - 1;
-//     } else if (parseInt(month) == 12 && week == total_week - 1 && !this_week){
-//         month = 1;
-//         year = parseInt(year) + 1;
-//     } else if (week == 0 && !this_week && parseInt(month) != 1 && parseInt(day) > 15){
-//         month = parseInt(month) - 1;
-//     } else if (week == total_week - 1 && !this_week){
-//         month = parseInt(month) + 1;
-//     }
-//     return `${day}-${month}-${year}`
-// }
-
 $(document).ready(() => {
     const device_mode = window.getComputedStyle(document.getElementById("device-mode"), null).display;
     if (device_mode == "none"){
