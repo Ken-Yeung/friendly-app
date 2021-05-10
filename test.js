@@ -1,5 +1,7 @@
 let $body = $(document.body);
 let scrollPosition = 0;
+let pressTimer;
+let activeTimers;
 
 function sleep(milliseconds) {
     return new Promise((resolve) => {
@@ -189,16 +191,43 @@ async function create_calendar_cell(lst){
                 cell = document.getElementById(this_id);
                 cell_txt.innerText = day;
                 await cell.appendChild(cell_txt);
-                cell.addEventListener("click", (e)=>{
-                    this_foo_id = this_id.split(/-(.+)/);
-                    alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
-                });
+                this_foo_id = this_id.split(/-(.+)/);
+                cell.addEventListener("mousedown", start_click);
+                cell.addEventListener("mouseup", end_click);
+                cell.addEventListener("touchstart", start_click);
+                cell.addEventListener("touchend", end_click);
             }
         }
         month_head[i].innerText = `${month} ${year}`;
     }
     // end append month & year
     return;
+}
+
+function end_click(e){
+    clearTimeout(pressTimer);
+    if (activeTimers){
+        alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
+    }
+    // Clear timeout
+    if (e.cancelable) {
+        e.preventDefault();
+    }
+    return false;
+}
+function start_click(e){
+    // Set timeout
+    activeTimers = true;
+    pressTimer = window.setTimeout(() => {
+        alert(`Holded for ${this_foo_id[0]}: ${this_foo_id[1]}`);
+        //End
+        activeTimers = false;
+    },1000);
+    // clearTimeout(pressTimer);
+    if (e.cancelable) {
+        e.preventDefault();
+    }
+    return false;
 }
 
 $(document).ready(() => {
