@@ -191,16 +191,35 @@ async function create_calendar_cell(lst){
                 cell = document.getElementById(this_id);
                 cell_txt.innerText = day;
                 await cell.appendChild(cell_txt);
-                cell.addEventListener("mousedown", start_click);
-                cell.addEventListener("mouseup", end_click);
-                cell.addEventListener("touchstart", start_click);
-                cell.addEventListener("touchend", end_click);
+                cell.addEventListener("click", foo_start_click);
+                // cell.addEventListener("mousedown", start_click);
+                // cell.addEventListener("mouseup", end_click);
+                // cell.addEventListener("touchstart", start_click);
+                // cell.addEventListener("touchend", end_click);
             }
         }
         month_head[i].innerText = `${month} ${year}`;
     }
     // end append month & year
     return;
+}
+
+function foo_start_click(e){
+    this_foo_id = this.id.split(/-(.+)/);
+    activeTimers = true;
+    pressTimer = window.setTimeout(() => {
+        //End
+        alert(`Holded for ${this_foo_id[0]}: ${this_foo_id[1]}`);
+        activeTimers = false;
+    },549);
+
+    if (activeTimers){
+        alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
+    }
+
+    clearTimeout(pressTimer);
+    if (e.cancelable) {e.preventDefault();}
+    return false;
 }
 
 function end_click(e){
