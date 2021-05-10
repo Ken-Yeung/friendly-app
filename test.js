@@ -2,6 +2,8 @@ let $body = $(document.body);
 let scrollPosition = 0;
 let pressTimer;
 let activeTimers;
+let clicked_timers;
+let clicked_status;
 
 function sleep(milliseconds) {
     return new Promise((resolve) => {
@@ -191,11 +193,11 @@ async function create_calendar_cell(lst){
                 cell = document.getElementById(this_id);
                 cell_txt.innerText = day;
                 await cell.appendChild(cell_txt);
-                cell.addEventListener("click", foo_start_click);
-                // cell.addEventListener("mousedown", start_click);
-                // cell.addEventListener("mouseup", end_click);
-                // cell.addEventListener("touchstart", start_click);
-                // cell.addEventListener("touchend", end_click);
+                // cell.addEventListener("click", foo_start_click);
+                cell.addEventListener("mousedown", start_click);
+                cell.addEventListener("mouseup", end_click);
+                cell.addEventListener("touchstart", start_click);
+                cell.addEventListener("touchend", end_click);
             }
         }
         month_head[i].innerText = `${month} ${year}`;
@@ -204,27 +206,28 @@ async function create_calendar_cell(lst){
     return;
 }
 
-function foo_start_click(e){
-    this_foo_id = this.id.split(/-(.+)/);
-    activeTimers = true;
-    pressTimer = window.setTimeout(() => {
-        //End
-        alert(`Holded for ${this_foo_id[0]}: ${this_foo_id[1]}`);
-        activeTimers = false;
-    },549);
+// function foo_start_click(e){
+//     this_foo_id = this.id.split(/-(.+)/);
+//     activeTimers = true;
+//     pressTimer = window.setTimeout(() => {
+//         //End
+//         alert(`Holded for ${this_foo_id[0]}: ${this_foo_id[1]}`);
+//         activeTimers = false;
+//     },549);
 
-    if (activeTimers){
-        alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
-    }
+//     if (activeTimers){
+//         alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
+//     }
 
-    clearTimeout(pressTimer);
-    if (e.cancelable) {e.preventDefault();}
-    return false;
-}
+//     clearTimeout(pressTimer);
+//     if (e.cancelable) {e.preventDefault();}
+//     return false;
+// }
 
 function end_click(e){
     clearTimeout(pressTimer);
-    if (activeTimers){
+    clearTimeout(clicked_timers);
+    if (activeTimers && clicked_status){
         this_foo_id = this.id.split(/-(.+)/);
         alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
     }
@@ -234,7 +237,11 @@ function end_click(e){
 }
 function start_click(e){
     // Set timeout
+    clicked_status = false;
     activeTimers = true;
+    clicked_timers = window.setTimeout(() => {
+        clicked_status = true;
+    },99);
     pressTimer = window.setTimeout(() => {
         this_foo_id = this.id.split(/-(.+)/);
         alert(`Holded for ${this_foo_id[0]}: ${this_foo_id[1]}`);
