@@ -222,7 +222,7 @@ function start_click(e){
         alert(`Holded for ${this_foo_id[0]}: ${this_foo_id[1]}`);
         //End
         activeTimers = false;
-    },1000);
+    },549);
     // clearTimeout(pressTimer);
     if (e.cancelable) {
         e.preventDefault();
