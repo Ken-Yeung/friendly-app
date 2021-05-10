@@ -206,9 +206,8 @@ async function create_calendar_cell(lst){
 function end_click(e){
     clearTimeout(pressTimer);
     if (activeTimers){
-        // this_foo_id = this_id.split(/-(.+)/);
-        // alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
-        alert(this.id);
+        this_foo_id = this.id.split(/-(.+)/);
+        alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
     }
     // Clear timeout
     if (e.cancelable) {e.preventDefault();}
@@ -218,7 +217,7 @@ function start_click(e){
     // Set timeout
     activeTimers = true;
     pressTimer = window.setTimeout(() => {
-        this_foo_id = this_id.split(/-(.+)/);
+        this_foo_id = this.id.split(/-(.+)/);
         alert(`Holded for ${this_foo_id[0]}: ${this_foo_id[1]}`);
         //End
         activeTimers = false;
