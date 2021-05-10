@@ -241,7 +241,7 @@ function start_click(e){
     activeTimers = true;
     clicked_timers = window.setTimeout(() => {
         clicked_status = true;
-    },99);
+    },45);
     pressTimer = window.setTimeout(() => {
         this_foo_id = this.id.split(/-(.+)/);
         alert(`Holded for ${this_foo_id[0]}: ${this_foo_id[1]}`);
