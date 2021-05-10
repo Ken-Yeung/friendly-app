@@ -206,13 +206,12 @@ async function create_calendar_cell(lst){
 function end_click(e){
     clearTimeout(pressTimer);
     if (activeTimers){
-        this_foo_id = this_id.split(/-(.+)/);
-        alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
+        // this_foo_id = this_id.split(/-(.+)/);
+        // alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
+        alert(this.id);
     }
     // Clear timeout
-    if (e.cancelable) {
-        e.preventDefault();
-    }
+    if (e.cancelable) {e.preventDefault();}
     return false;
 }
 function start_click(e){
@@ -225,9 +224,7 @@ function start_click(e){
         activeTimers = false;
     },549);
     // clearTimeout(pressTimer);
-    if (e.cancelable) {
-        e.preventDefault();
-    }
+    if (e.cancelable) {e.preventDefault();}
     return false;
 }
 
