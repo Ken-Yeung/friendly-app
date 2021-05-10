@@ -191,7 +191,6 @@ async function create_calendar_cell(lst){
                 cell = document.getElementById(this_id);
                 cell_txt.innerText = day;
                 await cell.appendChild(cell_txt);
-                this_foo_id = this_id.split(/-(.+)/);
                 cell.addEventListener("mousedown", start_click);
                 cell.addEventListener("mouseup", end_click);
                 cell.addEventListener("touchstart", start_click);
@@ -207,6 +206,7 @@ async function create_calendar_cell(lst){
 function end_click(e){
     clearTimeout(pressTimer);
     if (activeTimers){
+        this_foo_id = this_id.split(/-(.+)/);
         alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
     }
     // Clear timeout
@@ -219,6 +219,7 @@ function start_click(e){
     // Set timeout
     activeTimers = true;
     pressTimer = window.setTimeout(() => {
+        this_foo_id = this_id.split(/-(.+)/);
         alert(`Holded for ${this_foo_id[0]}: ${this_foo_id[1]}`);
         //End
         activeTimers = false;
