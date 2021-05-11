@@ -1,6 +1,7 @@
 function add_events(){
     const sign_up_norm = document.querySelectorAll("#create_ac_portal");
     const sign_in_port = document.querySelectorAll("#sign_in_portal");
+    const to_login_home = document.querySelectorAll("#to_login_home");
 
     const sign_up_port = document.getElementById("sign_up_port");
 
@@ -9,11 +10,19 @@ function add_events(){
     for (let i = 0; i < sign_up_norm.length; i++){
         sign_up_norm[i].addEventListener("click", sign_up_norm_fuc);
     }
-
     for (let i = 0; i < sign_in_port.length; i++){
         sign_in_port[i].addEventListener("click", sign_in_port_fuc);
     }
+    for (let i = 0; i < to_login_home.length; i++){
+        to_login_home[i].addEventListener("click", to_login_home_func);
+    }
 
+    return false;
+}
+
+function to_login_home_func(e){
+    const to_log_home = document.getElementById("t-1");
+    to_log_home.click();
     return false;
 }
 
