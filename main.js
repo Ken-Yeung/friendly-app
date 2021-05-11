@@ -128,7 +128,13 @@ function end_click(e){
     clearTimeout(pressTimer);
     if (activeTimers){
         this_foo_id = this.id.split(/-(.+)/);
-        alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
+        let class_status = this.classList.contains("selecting");
+        // alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
+        if (!class_status){
+            $(this).addClass("selecting", 666, "linear");
+        } else {
+            $(this).removeClass("selecting", 666, "linear");
+        }
     }
     // Clear timeout
     if (e.cancelable) {e.preventDefault();}
