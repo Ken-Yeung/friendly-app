@@ -91,11 +91,11 @@ async function create_calendar_cell(lst, mode){
                 cell = document.getElementById(this_id);
                 cell_txt.innerText = day;
                 await cell.appendChild(cell_txt);
-                // cell.addEventListener("click", foo_start_click);
-                cell.addEventListener("mousedown", start_click);
-                cell.addEventListener("mouseup", end_click);
-                cell.addEventListener("touchstart", start_click);
-                cell.addEventListener("touchend", end_click);
+                cell.addEventListener("click", foo_start_click);
+                // cell.addEventListener("mousedown", start_click);
+                // cell.addEventListener("mouseup", end_click);
+                // cell.addEventListener("touchstart", start_click);
+                // cell.addEventListener("touchend", end_click);
             }
         }
         month_head[i].innerText = `${month} ${year}`;
@@ -122,6 +122,19 @@ async function create_calendar_cell(lst, mode){
     }
     // end append month & year
     return false;
+}
+
+function foo_start_click(e){
+    this_foo_id = this.id.split(/-(.+)/);
+    let check_available = this_foo_id[1].split(/-(.+)/)[0];
+    check_available = check_available == "cell";
+    let class_status = $(this).children("div").hasClass("selecting");
+    // alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
+    if (!class_status && check_available){
+        $(this).children("div").addClass("selecting", 1234, "easeOutBounce");
+    } else if (check_available) {
+        $(this).children("div").removeClass("selecting", 1234, "easeOutBounce");
+    }
 }
 
 function end_click(e){
