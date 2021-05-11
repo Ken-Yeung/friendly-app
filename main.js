@@ -1,3 +1,8 @@
+let $body = $(document.body);
+let scrollPosition = 0;
+let pressTimer;
+let activeTimers;
+
 function current_date(){
     let today = new Date();
     let date = today.getDate()+'-'+(today.getMonth()+1)+'-'+ today.getFullYear();
@@ -99,8 +104,7 @@ async function create_calendar_cell(lst, mode){
 
 function end_click(e){
     clearTimeout(pressTimer);
-    clearTimeout(clicked_timers);
-    if (activeTimers && clicked_status){
+    if (activeTimers){
         this_foo_id = this.id.split(/-(.+)/);
         alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
     }
@@ -110,11 +114,7 @@ function end_click(e){
 }
 function start_click(e){
     // Set timeout
-    clicked_status = false;
     activeTimers = true;
-    clicked_timers = window.setTimeout(() => {
-        clicked_status = true;
-    },99);
     pressTimer = window.setTimeout(() => {
         this_foo_id = this.id.split(/-(.+)/);
         alert(`Holded for ${this_foo_id[0]}: ${this_foo_id[1]}`);
