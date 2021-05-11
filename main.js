@@ -22,9 +22,8 @@ function sign_up_norm_fuc(e){
 }
 
 function sign_in_port_fuc(e){
-    const test_back = document.getElementById("t-1");
-
-    test_back.click();
+    const sign_in_page = document.getElementById("t-3");
+    sign_in_page.click();
     return false;
 }
 
