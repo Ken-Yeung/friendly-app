@@ -128,12 +128,12 @@ function end_click(e){
     clearTimeout(pressTimer);
     if (activeTimers){
         this_foo_id = this.id.split(/-(.+)/);
-        let class_status = this.classList.contains("selecting");
+        let class_status = $(this).hasClass("selecting");
         // alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
         if (!class_status){
-            $(this).children("div").addClass("selecting", 666, "linear");
+            $(this).children("div").addClass("selecting", 1234, "easeOutBounce");
         } else {
-            $(this).children("div").removeClass("selecting", 666, "linear");
+            $(this).children("div").removeClass("selecting", 1234, "easeOutBounce");
         }
     }
     // Clear timeout
