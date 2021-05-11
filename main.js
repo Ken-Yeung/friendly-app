@@ -29,7 +29,7 @@ async function create_calendar_cell(lst, mode){
     const month_head = document.querySelectorAll(`#${mode}-month-head`);
     const calendar_month = document.querySelectorAll(`#${mode}-months`);
     const slide_dot = document.getElementsByClassName("w-slider-dot");
-    const test_only = document.getElementsByClassName("log-in-btn");
+    // const test_only = document.getElementsByClassName("log-in-btn");
     console.log(lst);
     // append month & year
     for(let i = 0; i < month_mask.length; i++){
@@ -113,11 +113,11 @@ async function create_calendar_cell(lst, mode){
         slide_dot[i + flag_count].id = dot_id;
 
         //test only
-        test_only[i].innerText = `${month_index}/${year}`
-        test_only[i].addEventListener("click", (e)=>{
-            let test_test1 = document.getElementById(dot_id);
-            test_test1.click();
-        });
+        // test_only[i].innerText = `${month_index}/${year}`
+        // test_only[i].addEventListener("click", (e)=>{
+        //     let test_test1 = document.getElementById(dot_id);
+        //     test_test1.click();
+        // });
         //End test
     }
     // end append month & year
@@ -161,12 +161,14 @@ function add_events(){
     const sign_in_port = document.querySelectorAll("#sign_in_portal");
     const to_login_home = document.querySelectorAll("#to_login_home");
     const to_create_event_page = document.querySelectorAll("#to_create_event_page");
-
+    
+    const clear = document.getElementById("create-clear");
     const sign_up_port = document.getElementById("sign_up_port");
     const create_calendar = document.getElementById("create-calendar");
 
     sign_up_port.addEventListener("click", sign_up_port_func);
     create_calendar.addEventListener("click", create_calendar_func);
+    clear.addEventListener("click", clear_func);
 
     for (let i = 0; i < sign_up_norm.length; i++){
         sign_up_norm[i].addEventListener("click", sign_up_norm_fuc);
@@ -181,6 +183,18 @@ function add_events(){
         to_create_event_page[i].addEventListener("click", to_create_event_page_func);
     }
 
+    return false;
+}
+
+function clear_func(e){
+    let cls = ".t_g_c_today"
+    let cls_status_len = $(cls).length;
+    let cls_status = $(cls).hasClass("selecting");
+    if (cls_status){
+        for(let i = 0; i < cls_status_len; i++){
+            $(cls)[i].removeClass("selecting", 123, "easeOutBounce");
+        }
+    }
     return false;
 }
 
