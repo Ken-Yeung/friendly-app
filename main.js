@@ -43,7 +43,7 @@ async function create_calendar_cell(lst, mode){
             calendar_row.className = "t_g_calendar_row";
             calendar_row.id = `${mode}-${year}-${month_index}-${ii}`;
             await calendar_wrapper[i].appendChild(calendar_row);
-            calendar_row = document.getElementById(`${year}-${month_index}-${ii}`);
+            calendar_row = document.getElementById(`${mode}-${year}-${month_index}-${ii}`);
 
             for (let iii = 0; iii < days.length; iii++){ //Every Day!
                 let day = days[iii]["day"];
@@ -157,8 +157,7 @@ function add_events(){
 async function create_calendar_func(e){
     const to_create_calendar = document.getElementById("t-5");
     let today = current_date().toString();
-
-    await create_calendar();
+    await create_calendar(today);
     to_create_calendar.click();
     return false;
 }
