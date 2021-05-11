@@ -28,6 +28,8 @@ async function create_calendar_cell(lst, mode){
     const month_mask = document.querySelectorAll(`#${mode}-calendar-wrapper`);
     const month_head = document.querySelectorAll(`#${mode}-month-head`);
     const calendar_month = document.querySelectorAll(`#${mode}-months`);
+    const slide_dot = document.getElementsByClassName("w-slider-dot");
+    const test_only = document.getElementsByClassName("log-in-btn");
     console.log(lst);
     // append month & year
     for(let i = 0; i < month_mask.length; i++){
@@ -98,7 +100,6 @@ async function create_calendar_cell(lst, mode){
         }
         month_head[i].innerText = `${month} ${year}`;
 
-        const slide_dot = document.getElementsByClassName("w-slider-dot");
         let flag_count = 0;
         switch (mode){
             case "create":
@@ -108,7 +109,16 @@ async function create_calendar_cell(lst, mode){
                 flag_count = 0;
                 console.log("Default");
         }
-        slide_dot[i + flag_count].id = `${mode}-dot-${month_index}-${year}`;
+        let dot_id = `${mode}-dot-${month_index}-${year}`;
+        slide_dot[i + flag_count].id = dot_id;
+
+        //test only
+        test_only[i].innerText = `${month_index}/${year}`
+        test_only[i].addEventListener("click", (e)=>{
+            let test_test1 = document.getElementById(dot_id);
+            test_test1.click();
+        });
+        //End test
     }
     // end append month & year
     return false;
