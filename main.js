@@ -128,7 +128,7 @@ function end_click(e){
     clearTimeout(pressTimer);
     if (activeTimers){
         this_foo_id = this.id.split(/-(.+)/);
-        let check_available = this_foo_id.split(/-(.+)/)[0];
+        let check_available = this_foo_id[1].split(/-(.+)/)[0];
         check_available = check_available == "cell";
         let class_status = $(this).children("div").hasClass("selecting");
         // alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
