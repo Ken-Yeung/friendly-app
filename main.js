@@ -130,7 +130,6 @@ function end_click(e){
         this_foo_id = this.id.split(/-(.+)/);
         let class_status = $(this).children("div").hasClass("selecting");
         // alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
-        console.log(class_status);
         if (!class_status){
             $(this).children("div").addClass("selecting", 1234, "easeOutBounce");
         } else {
