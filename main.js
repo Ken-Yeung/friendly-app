@@ -97,6 +97,18 @@ async function create_calendar_cell(lst, mode){
             }
         }
         month_head[i].innerText = `${month} ${year}`;
+
+        const slide_dot = document.getElementsByClassName("w-slider-dot");
+        let flag_count = 0;
+        switch (mode){
+            case "create":
+                flag_count = 0;
+                break;
+            default:
+                flag_count = 0;
+                console.log("Default");
+        }
+        slide_dot[i + flag_count].id = `${mode}-dot-${month_index}-${year}`;
     }
     // end append month & year
     return false;
