@@ -188,12 +188,9 @@ function add_events(){
 
 function clear_func(e){
     let cls = ".t_g_c_today"
-    let cls_status_len = $(cls).length;
     let cls_status = $(cls).hasClass("selecting");
     if (cls_status){
-        for(let i = 0; i < cls_status_len; i++){
-            $(cls)[i].removeClass("selecting", 123, "easeOutBounce");
-        }
+        $(cls).removeClass("selecting", 123, "easeOutBounce");
     }
     return false;
 }
