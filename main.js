@@ -131,9 +131,9 @@ function end_click(e){
         let class_status = this.classList.contains("selecting");
         // alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
         if (!class_status){
-            $(this).children[0].addClass("selecting", 666, "linear");
+            $(this).children("div").addClass("selecting", 666, "linear");
         } else {
-            $(this).children[0].removeClass("selecting", 666, "linear");
+            $(this).children("div").removeClass("selecting", 666, "linear");
         }
     }
     // Clear timeout
