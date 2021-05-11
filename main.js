@@ -1,9 +1,12 @@
 function add_events(){
     const sign_up_norm = document.getElementById("create_ac_portal");
-    const sign_in_port = document.getElementById("sign_in_portal");
+    const sign_in_port = document.querySelectorAll("#sign_in_portal");
 
     sign_up_norm.addEventListener("click", sign_up_norm_fuc);
-    sign_in_port.addEventListener("click", sign_in_port_fuc);
+
+    for (let i = 0; i < sign_in_port.length; i++){
+        sign_in_port[i].addEventListener("click", sign_in_port_fuc);
+    }
 
     return false;
 }
