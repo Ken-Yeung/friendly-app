@@ -131,43 +131,43 @@ function foo_start_click(e){
     let class_status = $(this).children("div").hasClass("selecting");
     // alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
     if (!class_status && check_available){
-        $(this).children("div").addClass("selecting", 1234, "easeOutBounce");
+        $(this).children("div").addClass("selecting");
     } else if (check_available) {
-        $(this).children("div").removeClass("selecting", 1234, "easeOutBounce");
+        $(this).children("div").removeClass("selecting");
     }
 }
 
-function end_click(e){
-    clearTimeout(pressTimer);
-    if (activeTimers){
-        this_foo_id = this.id.split(/-(.+)/);
-        let check_available = this_foo_id[1].split(/-(.+)/)[0];
-        check_available = check_available == "cell";
-        let class_status = $(this).children("div").hasClass("selecting");
-        // alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
-        if (!class_status && check_available){
-            $(this).children("div").addClass("selecting", 1234, "easeOutBounce");
-        } else if (check_available) {
-            $(this).children("div").removeClass("selecting", 1234, "easeOutBounce");
-        }
-    }
-    // Clear timeout
-    if (e.cancelable) {e.preventDefault();}
-    return false;
-}
-function start_click(e){
-    // Set timeout
-    activeTimers = true;
-    pressTimer = window.setTimeout(() => {
-        this_foo_id = this.id.split(/-(.+)/);
-        alert(`Holded for ${this_foo_id[0]}: ${this_foo_id[1]}`);
-        //End
-        activeTimers = false;
-    },549);
-    // clearTimeout(pressTimer);
-    if (e.cancelable) {e.preventDefault();}
-    return false;
-}
+// function end_click(e){
+//     clearTimeout(pressTimer);
+//     if (activeTimers){
+//         this_foo_id = this.id.split(/-(.+)/);
+//         let check_available = this_foo_id[1].split(/-(.+)/)[0];
+//         check_available = check_available == "cell";
+//         let class_status = $(this).children("div").hasClass("selecting");
+//         // alert(`${this_foo_id[0]}: ${this_foo_id[1]}`);
+//         if (!class_status && check_available){
+//             $(this).children("div").addClass("selecting", 1234, "easeOutBounce");
+//         } else if (check_available) {
+//             $(this).children("div").removeClass("selecting", 1234, "easeOutBounce");
+//         }
+//     }
+//     // Clear timeout
+//     if (e.cancelable) {e.preventDefault();}
+//     return false;
+// }
+// function start_click(e){
+//     // Set timeout
+//     activeTimers = true;
+//     pressTimer = window.setTimeout(() => {
+//         this_foo_id = this.id.split(/-(.+)/);
+//         alert(`Holded for ${this_foo_id[0]}: ${this_foo_id[1]}`);
+//         //End
+//         activeTimers = false;
+//     },549);
+//     // clearTimeout(pressTimer);
+//     if (e.cancelable) {e.preventDefault();}
+//     return false;
+// }
 
 function add_events(){
     const sign_up_norm = document.querySelectorAll("#create_ac_portal");
@@ -223,7 +223,7 @@ function clear_func(e){
     let cls = ".t_g_c_today"
     let cls_status = $(cls).hasClass("selecting");
     if (cls_status){
-        $(cls).removeClass("selecting", 123, "easeOutBounce");
+        $(cls).removeClass("selecting");
     }
     return false;
 }
