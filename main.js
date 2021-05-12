@@ -178,7 +178,11 @@ function add_events(){
     const clear = document.getElementById("create-clear");
     const sign_up_port = document.getElementById("sign_up_port");
     const create_calendar = document.getElementById("create-calendar");
+    const create_sub_tab_link1 = document.getElementById("create-sub-tab-link1");
+    const create_sub_tab_link2 = document.getElementById("create-sub-tab-link2");
 
+    create_sub_tab_link1.addEventListener("click", create_sub_tab_link1_func);
+    create_sub_tab_link2.addEventListener("click", create_sub_tab_link2_func);
     sign_up_port.addEventListener("click", sign_up_port_func);
     create_calendar.addEventListener("click", create_calendar_func);
     clear.addEventListener("click", clear_func);
@@ -196,6 +200,26 @@ function add_events(){
         to_create_event_page[i].addEventListener("click", to_create_event_page_func);
     }
 
+    return false;
+}
+
+function create_sub_tab_link1_func(e){
+    $("#create-sub-tab-link1-img").animate({
+        backgroundColor: "#f90"
+    }, 333);
+    $("#create-sub-tab-link2-img").animate({
+        backgroundColor: "white"
+    }, 333);
+    return false;
+}
+
+function create_sub_tab_link2_func(e){
+    $("#create-sub-tab-link2-img").animate({
+        backgroundColor: "#f90"
+    }, 333);
+    $("#create-sub-tab-link1-img").animate({
+        backgroundColor: "white"
+    }, 333);
     return false;
 }
 
@@ -250,5 +274,7 @@ function sign_in_port_fuc(e){
 
 $(document).ready(() => {
     add_events();
+    //initial
+    document.getElementById("create-sub-tab-link1").click();
     // console.log("Finished");
 });
