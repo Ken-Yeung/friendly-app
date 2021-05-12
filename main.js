@@ -204,30 +204,18 @@ function add_events(){
 }
 
 function create_sub_tab_link1_func(e){
-    $("#create-sub-tab-link1-img").animate({
-        backgroundColor: "rgba(36, 100, 100, 1.0)"
-    }, 333, ()=>{
-        console.log("Done Animation!");
-    });
-    $("#create-sub-tab-link2-img").animate({
-        backgroundColor: "rgba(0, 0, 100, 1.0)"
-    }, 333, ()=>{
-        console.log("Done Animation!");
-    });
+    const link1_img = document.getElementById("create-sub-tab-link1-img");
+    const link2_img = document.getElementById("create-sub-tab-link2-img");
+    link1_img.style.backgroundColor = "#ff9900";
+    link2_img.style.backgroundColor = "white";
     return false;
 }
 
 function create_sub_tab_link2_func(e){
-    $("#create-sub-tab-link2-img").animate({
-        backgroundColor: "rgba(36, 100, 100, 1.0)"
-    }, 333, ()=>{
-        console.log("Done Animation!");
-    });
-    $("#create-sub-tab-link1-img").animate({
-        backgroundColor: "rgba(0, 0, 100, 1.0)"
-    }, 333, ()=>{
-        console.log("Done Animation!");
-    });
+    const link1_img = document.getElementById("create-sub-tab-link1-img");
+    const link2_img = document.getElementById("create-sub-tab-link2-img");
+    link2_img.style.backgroundColor = "#ff9900";
+    link1_img.style.backgroundColor = "white";
     return false;
 }
 
