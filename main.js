@@ -205,12 +205,12 @@ function add_events(){
 
 function create_sub_tab_link1_func(e){
     $("#create-sub-tab-link1-img").animate({
-        backgroundColor: "#f90"
+        backgroundColor: "rgba(36, 100, 100, 1.0)"
     }, 333, ()=>{
         console.log("Done Animation!");
     });
     $("#create-sub-tab-link2-img").animate({
-        backgroundColor: "white"
+        backgroundColor: "rgba(0, 0, 100, 1.0)"
     }, 333, ()=>{
         console.log("Done Animation!");
     });
@@ -219,12 +219,12 @@ function create_sub_tab_link1_func(e){
 
 function create_sub_tab_link2_func(e){
     $("#create-sub-tab-link2-img").animate({
-        backgroundColor: "#f90"
+        backgroundColor: "rgba(36, 100, 100, 1.0)"
     }, 333, ()=>{
         console.log("Done Animation!");
     });
     $("#create-sub-tab-link1-img").animate({
-        backgroundColor: "white"
+        backgroundColor: "rgba(0, 0, 100, 1.0)"
     }, 333, ()=>{
         console.log("Done Animation!");
     });
