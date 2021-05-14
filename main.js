@@ -211,7 +211,7 @@ function create_confirm_func(e){
     for (let i = 0; i < date_cell.length; i++){
         let check_selecting = date_cell[i].classList.contains("selecting");
         if (check_selecting){
-            let cell = date_cell[i].id;
+            let cell = date_cell[i].parentElement.id;
             selected_arr.push(cell);
         }
     }
