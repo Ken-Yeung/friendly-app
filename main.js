@@ -180,12 +180,14 @@ function add_events(){
     const create_calendar = document.getElementById("create-calendar");
     const create_sub_tab_link1 = document.getElementById("create-sub-tab-link1");
     const create_sub_tab_link2 = document.getElementById("create-sub-tab-link2");
+    const create_confirm = document.getElementById("create-confirm");
 
     create_sub_tab_link1.addEventListener("click", create_sub_tab_link1_func);
     create_sub_tab_link2.addEventListener("click", create_sub_tab_link2_func);
     sign_up_port.addEventListener("click", sign_up_port_func);
     create_calendar.addEventListener("click", create_calendar_func);
     clear.addEventListener("click", clear_func);
+    create_confirm.addEventListener("click", create_confirm_func);
 
     for (let i = 0; i < sign_up_norm.length; i++){
         sign_up_norm[i].addEventListener("click", sign_up_norm_fuc);
@@ -200,6 +202,21 @@ function add_events(){
         to_create_event_page[i].addEventListener("click", to_create_event_page_func);
     }
 
+    return false;
+}
+
+function create_confirm_func(e){
+    const date_cell = document.getElementsByClassName("t_g_c_today");
+    let selected_arr = [];
+    for (let i = 0; i < date_cell.length; i++){
+        let check_selecting = date_cell[i].classList.contains("selecting");
+        if (check_selecting){
+            let cell = date_cell[i].id;
+            selected_arr.push(cell);
+        }
+    }
+    console.log(selected_arr);
+    clear_func(e);
     return false;
 }
 
@@ -274,3 +291,9 @@ $(document).ready(() => {
     document.getElementById("create-sub-tab-link1").click();
     // console.log("Finished");
 });
+
+//14/5/2021
+//1 create gen ID for event in server (activate after create-confirm button request)
+//2 local storage create-calendar
+//3 Get all available dates ID
+//4 push user ID into calendar json
