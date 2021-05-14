@@ -212,7 +212,11 @@ function create_confirm_func(e){
         let check_selecting = date_cell[i].classList.contains("selecting");
         if (check_selecting){
             let cell = date_cell[i].parentElement.id;
-            selected_arr.push(cell);
+            let check_cell = cell.split("-"); //.split(/-(.+)/);
+            let cell_date = `${check_cell[2]}-${check_cell[3]}-${check_cell[4]}`;
+            if(check_cell[1] == "cell"){
+                selected_arr.push(cell_date);
+            }
         }
     }
     console.log(selected_arr);
