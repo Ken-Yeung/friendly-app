@@ -216,7 +216,7 @@ function create_confirm_func(e){
         }
     }
     console.log(selected_arr);
-    clear_func(e);
+    // clear_func(e);
     return false;
 }
 
