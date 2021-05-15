@@ -236,7 +236,7 @@ function calendar_add_user(mode, selected_lst){
         let selected_dates = selected_lst[i];
 
         for(let ii = 0; ii < calendar_details.length; ii++){ // New calendar
-            let weeks = calendar_details[ii]["week"];
+            let weeks = calendar_details[ii]["weeks"];
 
             for(let iii = 0; iii < weeks.length; iii++){ //weeks
                 let days = weeks[iii]["days"];
@@ -246,11 +246,12 @@ function calendar_add_user(mode, selected_lst){
                     if(lst_id){
                         days[iv]["participant"].push(user_name);
                         break;
-                    } //not end yet
+                    } //not end yet`
                 } //end days
             } //end weeks
         } // end calendar
     } // end selected
+    console.log(calendar_details);
     return false;
 }
 
