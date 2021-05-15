@@ -19,6 +19,9 @@ async function create_calendar(current_date){
     let main_data_lst = [];
     await get_api(`https://beagleetech.ga/calendar_dates?date=${current_date}`).then(res=>{
         main_data_lst = res["details"];
+        localStorage.setItem("create-calendar", JSON.stringify(main_data_lst));
+        main_data_lst = localStorage.getItem("create-calendar");
+        main_data_lst = JSON.parse(main_data_lst);
     });
     create_calendar_cell(main_data_lst, "create");
     return false;
@@ -219,8 +222,35 @@ function create_confirm_func(e){
             }
         }
     }
+    calendar_add_user("create", selected_arr);
     console.log(selected_arr);
     // clear_func(e);
+    return false;
+}
+
+function calendar_add_user(mode, selected_lst){
+    let calendar_details = localStorage.getItem(`${mode}-calendar`);
+    calendar_details = JSON.parse(calendar_details);
+    let user_name = localStorage.getItem("user_info");
+    for(let i = 0; i < selected_lst.length; i++){ // selected lst
+        let selected_dates = selected_lst[i];
+
+        for(let ii = 0; ii < calendar_details.length; ii++){ // New calendar
+            let weeks = calendar_details[ii]["week"];
+
+            for(let iii = 0; iii < weeks.length; iii++){ //weeks
+                let days = weeks[iii]["days"];
+
+                for(let iv = 0; iv < days.length; iv++){ // days
+                    let lst_id = days[iv]["id"] == selected_dates;
+                    if(lst_id){
+                        days[iv]["participant"].push(user_name);
+                        break;
+                    } //not end yet
+                } //end days
+            } //end weeks
+        } // end calendar
+    } // end selected
     return false;
 }
 
@@ -290,6 +320,7 @@ function sign_in_port_fuc(e){
 }
 
 $(document).ready(() => {
+    localStorage.setItem("user_info", "Ken")
     add_events();
     //initial
     document.getElementById("create-sub-tab-link1").click();
