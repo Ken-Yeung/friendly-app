@@ -260,8 +260,8 @@ function calendar_add_user(mode, selected_lst){
                             }
                             if(!foo_flag){
                                 participant.push({"user": user_name, "uid": uid});
-                            } else{
-                                alert("Already exits");
+                            } else {
+                                console.log(`${days[iv]["id"]}: ${user_name}-${uid} exits`);
                             }
                         } else {
                             participant.push({"user": user_name, "uid": uid});
