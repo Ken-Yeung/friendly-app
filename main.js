@@ -232,8 +232,10 @@ function calendar_add_user(mode, selected_lst){
     let calendar_details = localStorage.getItem(`${mode}-calendar`);
     calendar_details = JSON.parse(calendar_details);
     let user_name = localStorage.getItem("user_info");
+    let uid = "#0420";
     for(let i = 0; i < selected_lst.length; i++){ // selected lst
         let selected_dates = selected_lst[i];
+        let push_status = false;
 
         for(let ii = 0; ii < calendar_details.length; ii++){ // New calendar
             let weeks = calendar_details[ii]["weeks"];
@@ -244,14 +246,41 @@ function calendar_add_user(mode, selected_lst){
                 for(let iv = 0; iv < days.length; iv++){ // days
                     let lst_id = days[iv]["id"] == selected_dates;
                     if(lst_id){
-                        days[iv]["participant"].push(user_name);
+                        let participant = days[iv]["participant"];
+                        let participant_len = participant.length > 0;
+                        if(participant_len){
+                            let foo_flag = false;
+                            for(let v = 0; v < participant.length; v++){
+                                let user_state = participant[v]["user"];
+                                let uid_state = participant[v]["uid"];
+                                let whole_state = user_state == user_name && uid_state == uid;
+                                if(whole_state){
+                                    foo_flag = true;
+                                }
+                            }
+                            if(!foo_flag){
+                                participant.push({"user": user_name, "uid": uid});
+                            } else{
+                                alert("Already exits");
+                            }
+                        } else {
+                            participant.push({"user": user_name, "uid": uid});
+                        }
+                        push_status = true;
                         break;
                     } //not end yet`
                 } //end days
+                if(push_status){
+                    break;
+                }
             } //end weeks
+            if(push_status){
+                break;
+            }
         } // end calendar
     } // end selected
     console.log(calendar_details);
+    localStorage.setItem(`${mode}-calendar`, JSON.stringify(calendar_details));
     return false;
 }
 
