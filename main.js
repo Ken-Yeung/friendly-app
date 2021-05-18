@@ -370,6 +370,7 @@ async function create_calendar_func(e){
 function to_create_event_page_func(e){
     const to_create_event = document.getElementById("t-4");
     const to_calendar = document.getElementById("create-sub-tab-link1");
+    clear_func(e);
     to_calendar.click();
     to_create_event.click();
     return false;
