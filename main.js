@@ -181,12 +181,14 @@ function add_events(){
     const clear = document.getElementById("create-clear");
     const sign_up_port = document.getElementById("sign_up_port");
     const create_calendar = document.getElementById("create-calendar");
+    const create_confirm = document.getElementById("create-confirm");
     // const create_sub_tab_link1 = document.getElementById("create-sub-tab-link1");
     // const create_sub_tab_link2 = document.getElementById("create-sub-tab-link2");
     const create_continue = document.getElementById("create-continue");
 
     // create_sub_tab_link1.addEventListener("click", create_sub_tab_link1_func);
     // create_sub_tab_link2.addEventListener("click", create_sub_tab_link2_func);
+    create_confirm.addEventListener("click", create_confirm_func);
     sign_up_port.addEventListener("click", sign_up_port_func);
     create_calendar.addEventListener("click", create_calendar_func);
     clear.addEventListener("click", clear_func);
@@ -363,7 +365,15 @@ async function create_calendar_func(e){
 
 function to_create_event_page_func(e){
     const to_create_event = document.getElementById("t-4");
+    const to_calendar = document.getElementById("create-sub-tab-link1");
+    to_calendar.click();
     to_create_event.click();
+    return false;
+}
+
+function create_confirm_func(e){ //temperarry
+    const to_calendar = document.getElementById("create-sub-tab-link1");
+    to_calendar.click();
     return false;
 }
 
