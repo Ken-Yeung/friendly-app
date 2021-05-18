@@ -181,16 +181,16 @@ function add_events(){
     const clear = document.getElementById("create-clear");
     const sign_up_port = document.getElementById("sign_up_port");
     const create_calendar = document.getElementById("create-calendar");
-    const create_sub_tab_link1 = document.getElementById("create-sub-tab-link1");
-    const create_sub_tab_link2 = document.getElementById("create-sub-tab-link2");
-    const create_confirm = document.getElementById("create-confirm");
+    // const create_sub_tab_link1 = document.getElementById("create-sub-tab-link1");
+    // const create_sub_tab_link2 = document.getElementById("create-sub-tab-link2");
+    const create_continue = document.getElementById("create-continue");
 
-    create_sub_tab_link1.addEventListener("click", create_sub_tab_link1_func);
-    create_sub_tab_link2.addEventListener("click", create_sub_tab_link2_func);
+    // create_sub_tab_link1.addEventListener("click", create_sub_tab_link1_func);
+    // create_sub_tab_link2.addEventListener("click", create_sub_tab_link2_func);
     sign_up_port.addEventListener("click", sign_up_port_func);
     create_calendar.addEventListener("click", create_calendar_func);
     clear.addEventListener("click", clear_func);
-    create_confirm.addEventListener("click", create_confirm_func);
+    create_continue.addEventListener("click", create_continue_func);
 
     for (let i = 0; i < sign_up_norm.length; i++){
         sign_up_norm[i].addEventListener("click", sign_up_norm_fuc);
@@ -208,8 +208,9 @@ function add_events(){
     return false;
 }
 
-function create_confirm_func(e){
+function create_continue_func(e){
     const date_cell = document.getElementsByClassName("t_g_c_today");
+    const continue_btn = document.getElementById("create-sub-tab-link2");
     let selected_arr = [];
     for (let i = 0; i < date_cell.length; i++){
         let check_selecting = date_cell[i].classList.contains("selecting");
@@ -224,7 +225,50 @@ function create_confirm_func(e){
     }
     calendar_add_user("create", selected_arr);
     console.log(selected_arr);
+    create_preview(selected_arr, "create");
+    continue_btn.click();
     // clear_func(e);
+    return false;
+}
+
+function create_preview(selected_arr, mode){
+    let append_div = document.getElementById(`${mode}-preview_container`);
+    while (append_div.firstChild) {
+        append_div.removeChild(append_div.lastChild);
+    }
+    for (let i = 0; i < selected_arr.length; i++){
+        let selected = selected_arr[i].split("-");
+        let wrapper_id = `${mode}-preview-wrapper-${selected[1]}-${selected[2]}`;
+        let day_id = `${mode}-preview-day-${selected[1]}-${selected[2]}`;
+        let month_id = `${mode}-preview-month-${selected[1]}-${selected[2]}`;
+
+        let preview_wrapper = document.getElementById(wrapper_id);
+        let preview_days = document.getElementById(day_id);
+        let wrapper_state = preview_wrapper != null;
+        if (wrapper_state){
+            // let day_txts = preview_days.innerText;
+            preview_days.innerText += `, ${selected[0]}`;
+        } else {
+            let div_wrapper = document.createElement("DIV");
+            let preview_letf = document.createElement("DIV");
+            let preview_right = document.createElement("DIV");
+
+            div_wrapper.className = "preview-wrapper";
+            div_wrapper.id = wrapper_id;
+
+            preview_letf.className = "preview-div letf";
+            preview_letf.id = month_id;
+            preview_letf.innerText = `${selected[1]}/${selected[2]}`;
+
+            preview_right.className = "preview-div right";
+            preview_right.id = day_id;
+            preview_right.innerText = selected[0];
+
+            div_wrapper.appendChild(preview_letf);
+            div_wrapper.appendChild(preview_right);
+            append_div.appendChild(div_wrapper);
+        }
+    }
     return false;
 }
 
@@ -284,21 +328,21 @@ function calendar_add_user(mode, selected_lst){
     return false;
 }
 
-function create_sub_tab_link1_func(e){
-    const link1_img = document.getElementById("create-sub-tab-link1-img");
-    const link2_img = document.getElementById("create-sub-tab-link2-img");
-    link1_img.style.backgroundColor = "#ff9900";
-    link2_img.style.backgroundColor = "white";
-    return false;
-}
+// function create_sub_tab_link1_func(e){
+//     const link1_img = document.getElementById("create-sub-tab-link1-img");
+//     const link2_img = document.getElementById("create-sub-tab-link2-img");
+//     link1_img.style.backgroundColor = "#ff9900";
+//     link2_img.style.backgroundColor = "white";
+//     return false;
+// }
 
-function create_sub_tab_link2_func(e){
-    const link1_img = document.getElementById("create-sub-tab-link1-img");
-    const link2_img = document.getElementById("create-sub-tab-link2-img");
-    link2_img.style.backgroundColor = "#ff9900";
-    link1_img.style.backgroundColor = "white";
-    return false;
-}
+// function create_sub_tab_link2_func(e){
+//     const link1_img = document.getElementById("create-sub-tab-link1-img");
+//     const link2_img = document.getElementById("create-sub-tab-link2-img");
+//     link2_img.style.backgroundColor = "#ff9900";
+//     link1_img.style.backgroundColor = "white";
+//     return false;
+// }
 
 function clear_func(e){
     let cls = ".t_g_c_today"
