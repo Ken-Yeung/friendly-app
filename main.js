@@ -225,10 +225,14 @@ function create_continue_func(e){
             }
         }
     }
-    calendar_add_user("create", selected_arr);
-    console.log(selected_arr);
-    create_preview(selected_arr, "create");
-    continue_btn.click();
+    if (selected_arr.length > 0){
+        calendar_add_user("create", selected_arr);
+        console.log(selected_arr);
+        create_preview(selected_arr, "create");
+        continue_btn.click();
+    } else {
+        alert("Select Date first");
+    }
     // clear_func(e);
     return false;
 }
