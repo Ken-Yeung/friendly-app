@@ -102,26 +102,7 @@ async function create_calendar_cell(lst, mode){
             }
         }
         month_head[i].innerText = `${month} ${year}`;
-        append_calendar_click_slide(year, month_index, i, "create");
-        // let flag_count = 0;
-        // switch (mode){
-        //     case "create":
-        //         flag_count = 0;
-        //         break;
-        //     default:
-        //         flag_count = 0;
-        //         console.log("Default");
-        // }
-        // let dot_id = `${mode}-dot-${month_index}-${year}`;
-        // slide_dot[i + flag_count].id = dot_id;
-
-        //test only
-        // test_only[i].innerText = `${month_index}/${year}`
-        // test_only[i].addEventListener("click", (e)=>{
-        //     let test_test1 = document.getElementById(dot_id);
-        //     test_test1.click();
-        // });
-        //End test
+        append_calendar_click_slide(year, month_index, i, mode);
     }
     // end append month & year
     return false;
@@ -444,7 +425,6 @@ $(document).ready(() => {
     localStorage.setItem("user_info", "Ken")
     add_events();
     //initial
-    document.getElementById("create-sub-tab-link1").click();
     // console.log("Finished");
 });
 
