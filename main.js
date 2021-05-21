@@ -201,6 +201,7 @@ function add_events(){
     const sign_up_port = document.getElementById("sign_up_port");
     const create_calendar = document.getElementById("create-calendar");
     const create_confirm = document.getElementById("create-confirm");
+    const create_choose_day = document.getElementById("to_create_choose_event_page");
     // const create_sub_tab_link1 = document.getElementById("create-sub-tab-link1");
     // const create_sub_tab_link2 = document.getElementById("create-sub-tab-link2");
     const create_continue = document.getElementById("create-continue");
@@ -212,6 +213,7 @@ function add_events(){
     create_calendar.addEventListener("click", create_calendar_func);
     clear.addEventListener("click", clear_func);
     create_continue.addEventListener("click", create_continue_func);
+    create_choose_day.addEventListener("click", create_choose_day_func);
 
     for (let i = 0; i < sign_up_norm.length; i++){
         sign_up_norm[i].addEventListener("click", sign_up_norm_fuc);
@@ -226,6 +228,12 @@ function add_events(){
         to_create_event_page[i].addEventListener("click", to_create_event_page_func);
     }
 
+    return false;
+}
+
+function create_choose_day_func(e){
+    document.getElementById("create-sub-tab-link1").click();
+    $(this).removeClass("current");
     return false;
 }
 
@@ -254,6 +262,7 @@ function create_continue_func(e){
         alert("Select Date first");
     }
     // clear_func(e);
+    $(this).removeClass("current");
     return false;
 }
 
@@ -284,7 +293,7 @@ function create_preview(selected_arr, mode){
 
             preview_letf.className = "preview-div letf";
             preview_letf.id = month_id;
-            preview_letf.innerText = `${convert_month_lst[parseInt(selected[1])]}/${selected[2]}`;
+            preview_letf.innerText = `${convert_month_lst[parseInt(selected[1])]}, ${selected[2]}`;
 
             preview_right.className = "preview-div right";
             preview_right.id = day_id;
