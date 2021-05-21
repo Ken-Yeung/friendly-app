@@ -2,6 +2,21 @@ let $body = $(document.body);
 let scrollPosition = 0;
 let pressTimer;
 let activeTimers;
+const convert_month_lst = [
+    "Start",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
+];
 
 function current_date(){
     let today = new Date();
@@ -215,8 +230,9 @@ function add_events(){
 }
 
 function create_continue_func(e){
+    const mode = this.id.split("-")[0];
     const date_cell = document.getElementsByClassName("t_g_c_today");
-    const continue_btn = document.getElementById("create-sub-tab-link2");
+    const continue_btn = document.getElementById(`${mode}-sub-tab-link2`);
     let selected_arr = [];
     for (let i = 0; i < date_cell.length; i++){
         let check_selecting = date_cell[i].classList.contains("selecting");
@@ -230,9 +246,9 @@ function create_continue_func(e){
         }
     }
     if (selected_arr.length > 0){
-        calendar_add_user("create", selected_arr);
+        calendar_add_user(mode, selected_arr);
         console.log(selected_arr);
-        create_preview(selected_arr, "create");
+        create_preview(selected_arr, mode);
         continue_btn.click();
     } else {
         alert("Select Date first");
@@ -268,7 +284,7 @@ function create_preview(selected_arr, mode){
 
             preview_letf.className = "preview-div letf";
             preview_letf.id = month_id;
-            preview_letf.innerText = `${selected[1]}/${selected[2]}`;
+            preview_letf.innerText = `${convert_month_lst[parseInt(selected[1])]}/${selected[2]}`;
 
             preview_right.className = "preview-div right";
             preview_right.id = day_id;
