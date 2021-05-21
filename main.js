@@ -31,8 +31,8 @@ async function create_calendar_cell(lst, mode){
     const month_mask = document.querySelectorAll(`#${mode}-calendar-wrapper`);
     const month_head = document.querySelectorAll(`#${mode}-month-head`);
     const calendar_month = document.querySelectorAll(`#${mode}-months`);
-    const slide_dot = document.getElementsByClassName("w-slider-dot");
     // const test_only = document.getElementsByClassName("log-in-btn");
+    // const slide_dot = document.getElementsByClassName("w-slider-dot");
     console.log(lst);
     // append month & year
     for(let i = 0; i < month_mask.length; i++){
@@ -102,18 +102,18 @@ async function create_calendar_cell(lst, mode){
             }
         }
         month_head[i].innerText = `${month} ${year}`;
-
-        let flag_count = 0;
-        switch (mode){
-            case "create":
-                flag_count = 0;
-                break;
-            default:
-                flag_count = 0;
-                console.log("Default");
-        }
-        let dot_id = `${mode}-dot-${month_index}-${year}`;
-        slide_dot[i + flag_count].id = dot_id;
+        append_calendar_click_slide(year, month_index, i, "create");
+        // let flag_count = 0;
+        // switch (mode){
+        //     case "create":
+        //         flag_count = 0;
+        //         break;
+        //     default:
+        //         flag_count = 0;
+        //         console.log("Default");
+        // }
+        // let dot_id = `${mode}-dot-${month_index}-${year}`;
+        // slide_dot[i + flag_count].id = dot_id;
 
         //test only
         // test_only[i].innerText = `${month_index}/${year}`
@@ -124,6 +124,29 @@ async function create_calendar_cell(lst, mode){
         //End test
     }
     // end append month & year
+    return false;
+}
+
+function append_calendar_click_slide(year, month_index, i, mode){
+    const slide_dot = document.getElementsByClassName("w-slider-dot");
+
+    let flag_count = 0;
+    switch (mode){
+        case "create":
+            flag_count = 0;
+            break;
+        default:
+            flag_count = 0;
+            console.log("Default");
+    }
+
+    let dot_id = `${mode}-dot-${month_index}-${year}`;
+    slide_dot[i + flag_count].id = dot_id;
+
+    // test_only[i].addEventListener("click", (e)=>{
+    //     let focus_slide = document.getElementById(dot_id);
+    //     focus_slide.click();
+    // });
     return false;
 }
 
@@ -273,6 +296,15 @@ function create_preview(selected_arr, mode){
             div_wrapper.appendChild(preview_letf);
             div_wrapper.appendChild(preview_right);
             append_div.appendChild(div_wrapper);
+
+            preview_wrapper = document.getElementById(wrapper_id);
+            preview_wrapper.addEventListener("click", (e)=>{
+                const sub_tab = document.getElementById(`${mode}-sub-tab-link1`);
+                const slide_dot = document.getElementById(`${mode}-dot-${selected[1]}-${selected[2]}`);
+                sub_tab.click();
+                slide_dot.click();
+                return false;
+            });
         }
     }
     return false;
