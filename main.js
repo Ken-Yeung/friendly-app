@@ -233,7 +233,7 @@ function add_events(){
 
 function create_choose_day_func(e){
     document.getElementById("create-sub-tab-link1").click();
-    $(this).removeClass("current");
+    $(`#${this.id}`).removeClass("current");
     return false;
 }
 
@@ -262,7 +262,7 @@ function create_continue_func(e){
         alert("Select Date first");
     }
     // clear_func(e);
-    $(this).removeClass("current");
+    $(`#${this.id}`).removeClass("current");
     return false;
 }
 
