@@ -258,11 +258,11 @@ function create_continue_func(e){
         console.log(selected_arr);
         create_preview(selected_arr, mode);
         continue_btn.click();
+        $("#to_create_choose_event_page").removeClass("current");
     } else {
         alert("Select Date first");
     }
     // clear_func(e);
-    $("#to_create_choose_event_page").removeClass("current");
     return false;
 }
 
@@ -309,6 +309,7 @@ function create_preview(selected_arr, mode){
                 const slide_dot = document.getElementById(`${mode}-dot-${selected[1]}-${selected[2]}`);
                 sub_tab.click();
                 slide_dot.click();
+                $("#to_create_choose_event_page").removeClass("current");
                 return false;
             });
         }
@@ -416,7 +417,6 @@ function to_create_event_page_func(e){
 
 function create_confirm_func(e){ //temperarry
     const to_calendar = document.getElementById("create-sub-tab-link1");
-    to_calendar.click();
     return false;
 }
 
