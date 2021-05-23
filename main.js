@@ -309,7 +309,7 @@ function create_preview(selected_arr, mode){
                 const slide_dot = document.getElementById(`${mode}-dot-${selected[1]}-${selected[2]}`);
                 sub_tab.click();
                 slide_dot.click();
-                $("#to_create_choose_event_page").removeClass("current");
+                $("#to_create_choose_event_page").addClass("current");
                 return false;
             });
         }
