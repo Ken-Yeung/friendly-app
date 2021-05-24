@@ -202,7 +202,7 @@ function add_events(){
     const create_calendar = document.getElementById("create-calendar");
     const create_confirm = document.getElementById("create-confirm");
     const create_choose_day = document.getElementById("to_create_choose_event_page");
-    // const show_log_in_pw_btn = document
+    const show_log_in_pw_btn = document.getElementById("show_password");
     // const create_sub_tab_link1 = document.getElementById("create-sub-tab-link1");
     // const create_sub_tab_link2 = document.getElementById("create-sub-tab-link2");
     const create_continue = document.getElementById("create-continue");
@@ -215,6 +215,7 @@ function add_events(){
     clear.addEventListener("click", clear_func);
     create_continue.addEventListener("click", create_continue_func);
     create_choose_day.addEventListener("click", create_choose_day_func);
+    show_log_in_pw_btn.addEventListener("click", show_log_in_pw_btn_func);
 
     for (let i = 0; i < sign_up_norm.length; i++){
         sign_up_norm[i].addEventListener("click", sign_up_norm_fuc);
@@ -229,6 +230,17 @@ function add_events(){
         to_create_event_page[i].addEventListener("click", to_create_event_page_func);
     }
 
+    return false;
+}
+
+function show_log_in_pw_btn_func(e){
+    const password_field = document.getElementById("login_form-assigned_id");
+    let field_status = password_field.getAttribute("type") == "password";
+    if(field_status){
+        password_field.setAttribute("type", "text");
+    } else {
+        password_field.setAttribute("type", "password");
+    }
     return false;
 }
 
