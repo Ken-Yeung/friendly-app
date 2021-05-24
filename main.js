@@ -202,6 +202,7 @@ function add_events(){
     const create_calendar = document.getElementById("create-calendar");
     const create_confirm = document.getElementById("create-confirm");
     const create_choose_day = document.getElementById("to_create_choose_event_page");
+    // const show_log_in_pw_btn = document
     // const create_sub_tab_link1 = document.getElementById("create-sub-tab-link1");
     // const create_sub_tab_link2 = document.getElementById("create-sub-tab-link2");
     const create_continue = document.getElementById("create-continue");
@@ -453,8 +454,9 @@ $(document).ready(() => {
     // console.log("Finished");
 });
 
-//14/5/2021
-//1 create gen ID for event in server (activate after create-confirm button request)
-//2 local storage create-calendar
-//3 Get all available dates ID
-//4 push user ID into calendar json
+//1 Display name (use to display and recieve invitation)
+//2 user login name ==> assign ID
+
+//Log in 
+//1 user login name
+//2 assigned ID
