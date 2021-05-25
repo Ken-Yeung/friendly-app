@@ -2,8 +2,11 @@ function takeshot() {
     let div = document.getElementById('save_me');
     html2canvas(div).then(
         function (canvas) {
-            document.body.appendChild(canvas);
-            console.log(canvas.toDataURL("image/jpeg", .9));
+            let src = canvas.toDataURL("image/jpeg", .9);
+            console.log(src);
+            let img = document.createElement("img");
+            img.src = src;
+            document.body.appendChild(img);
         })
 }
 
