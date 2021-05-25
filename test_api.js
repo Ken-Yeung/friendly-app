@@ -6,6 +6,7 @@ function takeshot() {
             console.log(src);
             let img = document.createElement("img");
             img.src = src;
+            img.className = "test-img";
             document.body.appendChild(img);
         })
 }
