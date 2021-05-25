@@ -3,6 +3,7 @@ function takeshot() {
     html2canvas(div).then(
         function (canvas) {
             document.body.appendChild(canvas);
+            console.log(canvas.toDataURL("image/jpeg", .9));
         })
 }
 
