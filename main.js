@@ -235,11 +235,14 @@ function add_events(){
 
 function show_log_in_pw_btn_func(e){
     const password_field = document.getElementById("login_form-assigned_id");
+    const this_ico = document.getElementById(this.id);
     let field_status = password_field.getAttribute("type") == "password";
     if(field_status){
         password_field.setAttribute("type", "text");
+        this_ico.src = "https://uploads-ssl.webflow.com/5ebc078b84f5ace6b7894a73/60adf6efb3486c474c261131_no-eye.png";
     } else {
         password_field.setAttribute("type", "password");
+        this_ico.src = "https://uploads-ssl.webflow.com/5ebc078b84f5ace6b7894a73/60adf6efad77b3670ca63f60_eye.png";
     }
     return false;
 }
