@@ -238,19 +238,19 @@ function add_events(){
 }
 
 function create_event_minus_func(e){
-    let duration = document.getElementById("create-duration").innerText;
-    if (parseInt(duration) > 1){
-        let caltor = parseInt(duration) - 1;
-        duration = caltor.toString();
+    const duration = document.getElementById("create-duration");
+    if (parseInt(duration.innerText) > 1){
+        let caltor = parseInt(duration.innerText) - 1;
+        duration.innerText = caltor.toString();
     }
     return false;
 }
 
 function create_event_add_func(e){
-    let duration = document.getElementById("create-duration").innerText;
-    if (parseInt(duration) < 15){
-        let caltor = parseInt(duration) + 1;
-        duration = caltor.toString();
+    const duration = document.getElementById("create-duration");
+    if (parseInt(duration.innerText) < 15){
+        let caltor = parseInt(duration.innerText) + 1;
+        duration.innerText = caltor.toString();
     }
     return false;
 }
