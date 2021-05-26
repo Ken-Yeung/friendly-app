@@ -464,9 +464,17 @@ function to_login_home_func(e){
     return false;
 }
 
-function sign_up_port_func(e){
+function sign_up_port_func(e){ //create account function
     const to_create_port = document.getElementById("t-4");
-    to_create_port.click();
+    const create_form_name = document.getElementById("create_form-name");
+    const checked = document.getElementById("create_form-check");
+
+    if(checked.checked){
+        console.log(create_form_name.value);
+        to_create_port.click();
+    } else {
+        alert("Please accept our terms and conditions before signing up.");
+    }
     return false;
 }
 
