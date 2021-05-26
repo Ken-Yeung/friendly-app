@@ -248,7 +248,7 @@ function create_event_minus_func(e){
 
 function create_event_add_func(e){
     const duration = document.getElementById("create-duration");
-    if (parseInt(duration.innerText) < 15){
+    if (parseInt(duration.innerText) < 14){
         let caltor = parseInt(duration.innerText) + 1;
         duration.innerText = caltor.toString();
     }
