@@ -238,7 +238,7 @@ function add_events(){
 }
 
 function create_event_minus_func(e){
-    const duration = document.getElementById("create-duration").innerText;
+    let duration = document.getElementById("create-duration").innerText;
     if (parseInt(duration) > 1){
         let caltor = parseInt(duration) - 1;
         duration = caltor.toString();
@@ -247,7 +247,7 @@ function create_event_minus_func(e){
 }
 
 function create_event_add_func(e){
-    const duration = document.getElementById("create-duration").innerText;
+    let duration = document.getElementById("create-duration").innerText;
     if (parseInt(duration) < 15){
         let caltor = parseInt(duration) + 1;
         duration = caltor.toString();
