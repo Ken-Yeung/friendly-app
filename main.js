@@ -203,6 +203,8 @@ function add_events(){
     const create_confirm = document.getElementById("create-confirm");
     const create_choose_day = document.getElementById("to_create_choose_event_page");
     const show_log_in_pw_btn = document.getElementById("show_password");
+    const create_event_add = document.getElementById("create_event-add");
+    const create_event_minus = document.getElementById("create_event-minus");
     // const create_sub_tab_link1 = document.getElementById("create-sub-tab-link1");
     // const create_sub_tab_link2 = document.getElementById("create-sub-tab-link2");
     const create_continue = document.getElementById("create-continue");
@@ -216,6 +218,8 @@ function add_events(){
     create_continue.addEventListener("click", create_continue_func);
     create_choose_day.addEventListener("click", create_choose_day_func);
     show_log_in_pw_btn.addEventListener("click", show_log_in_pw_btn_func);
+    create_event_add.addEventListener("click", create_event_add_func);
+    create_event_minus.addEventListener("click", create_event_minus_func);
 
     for (let i = 0; i < sign_up_norm.length; i++){
         sign_up_norm[i].addEventListener("click", sign_up_norm_fuc);
@@ -230,6 +234,24 @@ function add_events(){
         to_create_event_page[i].addEventListener("click", to_create_event_page_func);
     }
 
+    return false;
+}
+
+function create_event_minus_func(e){
+    const duration = document.getElementById("create-duration").innerText;
+    if (parseInt(duration) > 1){
+        let caltor = parseInt(duration) - 1;
+        duration = caltor.toString();
+    }
+    return false;
+}
+
+function create_event_add_func(e){
+    const duration = document.getElementById("create-duration").innerText;
+    if (parseInt(duration) < 15){
+        let caltor = parseInt(duration) + 1;
+        duration = caltor.toString();
+    }
     return false;
 }
 
