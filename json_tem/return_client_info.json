@@ -1,0 +1,24 @@
+{
+    "user": "Ken",
+    "id": "#420",
+    "events": [
+        {
+            "e_id": "id1",
+            "event_name": "bbq",
+            "description": "go bbq",
+            "host": false
+        },
+        {
+            "e_id": "id2",
+            "event_name": "bbq",
+            "description": "go bbq",
+            "host": true
+        },
+        {
+            "e_id": "id3",
+            "event_name": "bbq",
+            "description": "go bbq",
+            "host": true
+        }
+    ]
+}
