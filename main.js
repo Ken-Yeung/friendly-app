@@ -297,6 +297,7 @@ function create_continue_func(e){
         create_preview(selected_arr, mode);
         continue_btn.click();
         $("#to_create_choose_event_page").removeClass("current");
+        $("#t-6").click();
     } else {
         alert("Select Date first");
     }
