@@ -469,8 +469,8 @@ function sign_up_port_func(e){ //create account function
     const to_create_port = document.getElementById("t-4");
     const create_form_name = document.getElementById("create_form-name");
     const checked = document.getElementById("create_form-check");
-
-    if(checked.checked){
+    let field_status = create_form_name.value.length > 0;
+    if(checked.checked && field_status){
         console.log(create_form_name.value);
         to_create_port.click();
     } else {
