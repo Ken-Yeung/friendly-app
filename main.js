@@ -297,7 +297,6 @@ function create_continue_func(e){
         create_preview(selected_arr, mode);
         continue_btn.click();
         $("#to_create_choose_event_page").removeClass("current");
-        $("#t-6").click();
     } else {
         alert("Select Date first");
     }
@@ -455,7 +454,8 @@ function to_create_event_page_func(e){
 }
 
 function create_confirm_func(e){ //temperarry
-    const to_calendar = document.getElementById("create-sub-tab-link1");
+    // const to_calendar = document.getElementById("create-sub-tab-link1");
+    $("#t-6").click();
     return false;
 }
 
