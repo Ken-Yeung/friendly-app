@@ -498,8 +498,13 @@ function sign_in_port_fuc(e){
 }
 
 $(document).ready(() => {
-    localStorage.setItem("user_info", "Ken")
-    add_events();
+    const device_mode = $("#device-mode").css("display") === "None";
+    if (device_mode){
+        localStorage.setItem("user_info", "Ken")
+        add_events();
+    } else {
+        alert("Mobile version only, please refresh.");
+    }
     //initial
     // console.log("Finished");
 });
