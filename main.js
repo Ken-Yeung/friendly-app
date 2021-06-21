@@ -498,7 +498,7 @@ function sign_in_port_fuc(e){
 }
 
 $(document).ready(() => {
-    const device_mode = $("#device-mode").css("display") === "None";
+    const device_mode = $("#device-mode").css("display") === "none" || $("#device-mode").css("display") === "None";
     if (device_mode){
         localStorage.setItem("user_info", "Ken")
         add_events();
