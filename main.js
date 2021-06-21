@@ -461,6 +461,8 @@ function create_confirm_func(e){ //temperarry
 
 function to_login_home_func(e){
     const to_log_home = document.getElementById("t-1");
+    const u_home = document.getElementById("u-home");
+    u_home.click();
     to_log_home.click();
     return false;
 }
@@ -469,10 +471,12 @@ function sign_up_port_func(e){ //create account function
     const to_create_port = document.getElementById("t-4");
     const create_form_name = document.getElementById("create_form-name");
     const checked = document.getElementById("create_form-check");
+    const u_create = document.getElementById("u-create");
     let field_status = create_form_name.value.length > 0;
     if(checked.checked && field_status){
         console.log(create_form_name.value);
         to_create_port.click();
+        u_create.click();
     } else {
         alert("Please accept our terms and conditions before signing up.");
     }
